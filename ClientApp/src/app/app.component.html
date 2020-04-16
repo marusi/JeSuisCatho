@@ -1,0 +1,88 @@
+
+
+
+<app-header></app-header>
+
+
+
+
+
+
+
+
+
+<div [@myAnimation]="o.isActivated ? o.activatedRoute : ''">
+  <router-outlet #o="outlet"></router-outlet>
+</div>
+
+
+
+
+
+
+<!-- Tab panes -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+
+
+  <div class="bar">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <span>
+            <b>JeSuisCatholique</b>
+            <br />
+            P.O BOX 59197 - 00200 <br />
+            Nairobi, Kenya. <br /><br />
+          </span>
+          <span class="">
+            <b><i class="glyph glyph-phone"></i></b>+254 702890432 <br />
+            <b><i class="glyph glyph-mail"></i></b>  info@jesuiscatho.org <br />
+          </span>
+
+        </div>
+        <div class="col-sm-18">
+
+        </div>
+
+        <div class="social">
+          <a class="current" href="index.html"> <img class="" height="18" src="../assets/Images/twitter.png" alt="twitter"></a>
+          <a href="index2.html"> <img class="" height="18" src="../assets/Images/facebook.png" alt="fb"></a>
+
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <a href="#top" class="back-to-top theme-dark bunksgrey">
+    <i class="glyph glyph-up"></i>
+    <span class="sr-only">Back to top</span>
+  </a>
+
+  <a [routerLink]='["/posters/new"]' class="add-product theme-dark jeshiBlue">
+    <i class="glyph glyph-add"></i>
+    <span class="sr-only">Add New Poster</span>
+  </a>
+
+
+</div>

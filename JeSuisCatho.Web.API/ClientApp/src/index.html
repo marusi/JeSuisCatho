@@ -1,0 +1,145 @@
+
+
+
+<!Doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>JeSuisCatholique</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="styles.css" type="text/css" />
+  <link href="assets/css/winstrap.min.css" type="text/css" />
+  <script type="text/javascript" src="assets/js/modernizr.custom.js"></script>
+
+
+  <script type="text/javascript" src="assets/js/jquery.js"></script>
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="assets/js/app.js"></script>
+  <style>
+ :root {
+	--yellow: #feb60a;
+	--red: #dc241f;
+	--green: #009543;
+
+}
+
+ 
+div.image {
+	display: flex;
+		margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	
+}
+
+
+
+div.loader {
+	display: flex;
+		margin: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	
+}
+
+.loader > div {
+	width: 3vw;
+	height: 3vw;
+	border-radius: 100%;
+	margin: 2vw;
+	background-image: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0) 100%);
+	animation: bounce 1.5s 0.5s linear infinite;
+}
+.yellow {
+	background-color: var(--yellow);
+}
+
+.red {
+	background-color: var(--red);
+	animation-delay: 0.1s;
+}
+
+.green{
+	background-color: var(--green);
+	animation-delay: 0.2s;
+}
+
+
+
+@keyframes bounce {
+	0%, 50%, 100% {
+		transform: scale(1);
+		filter: blur(0px);
+	}
+	25% {
+		transform: scale(0.6);
+		filter: blur(3px);
+	}
+	75% {
+		filter: blur(3px);
+		transform: scale(1.4);
+	}
+}
+  </style>
+
+  <!-- <script type="text/javascript" src="assets/js/sw.js"></script> -->
+</head>
+<body>
+
+	<app-root>
+
+		<div class="image">
+			<p>Loading.. Chargement..</p>
+		</div>
+	
+		<div class="image">
+			<img src="../logo.jpg" width="300" alt="logo" /><br/>
+			
+		</div>
+		<div class="loader">
+
+			<div class="green"></div>
+			<div class="yellow"></div>
+			<div class="red"></div>
+			<div class="green"></div>
+			<div class="red"></div>
+			<div class="yellow"></div>
+
+
+		</div>
+
+
+
+
+	</app-root>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+

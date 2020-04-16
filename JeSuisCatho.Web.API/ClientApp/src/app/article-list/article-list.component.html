@@ -1,0 +1,53 @@
+<div class="row row-sm">
+
+  <ol class="list-items">
+    <li class="list-items-row">
+     
+    </li>
+
+    <li class="list-items-row" *ngFor="let p of articles">
+      <div class="row">
+        <div class="entity-list ">
+          <div class="entity-list-item " matRipple [matRippleColor]="myColor" [routerLink]="['/articles/', p.id]">
+            <div class="item-icon">
+              <span class="">{{ p.id }}</span>
+            </div>
+            <div class="item-content-secondary">
+              <div class="content-text-tertiary "> <span class="label label-danger">{{ p.ambaco.dateOfEvent | date:'shortDate'  }}</span>  </div>
+            </div>
+
+            <div class="item-content-primary">
+
+              <div class="content-text-primary "> {{ p.newsCategory.name}}</div>
+              <div class="content-text-secondary">{{ p.ambaco.title }}, {{ p.ambaco.subTitle }} </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </li>
+  </ol>
+
+
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

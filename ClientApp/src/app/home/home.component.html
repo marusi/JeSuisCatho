@@ -1,0 +1,356 @@
+<div class="row">
+
+
+  <div class="tabs color-5">
+
+    <ul class=" nav nav-tabs text-center" role="tablist">
+      <li role="presentation" class=" active"><a href="#karen" aria-controls="karen" role="tab" data-toggle="tab">Prayers</a></li>
+      <li role="presentation" class=""><a href="#lavington" aria-controls="lavington" role="tab" data-toggle="tab">Jumuyia</a></li>
+      <li role="presentation" class=""><a href="#upcoming" aria-controls="upcoming" role="tab" data-toggle="tab">Shop</a></li>
+
+
+
+    </ul>
+  </div>
+
+  <div class="tab-content ">
+
+    <div role="tabpanel" class=" tab-pane active" id="karen">
+    
+      <h4></h4>
+          <div class="row row-sm" id="captions">
+
+              <div class="container">
+
+
+
+
+
+
+            <div class="col-md-7">
+              <mat-list>
+                <h3 mat-subheader>Holy Rosary</h3>
+              </mat-list>
+              <div class="card">
+                <div class="first">
+
+                </div>
+                <div class="second" id="second">
+
+                  <img (click)="showCard()" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIw%0D%0AMDAvc3ZnIj4KCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0i%0D%0Abm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0i%0D%0ALTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBvbHln%0D%0Ab24gc3Ryb2tlPSIjZmZmZmZmIiBpZD0ic3ZnXzEiIHBvaW50cz0iODAuMiw1MS42IDUxLjQsNTEu%0D%0ANiA1MS40LDIyLjYgNDguOSwyMi42IDQ4LjksNTEuNiAxOS45LDUxLjYgMTkuOSw1NC4xIDQ4Ljks%0D%0ANTQuMSA0OC45LDgzLjEgICA1MS40LDgzLjEgNTEuNCw1NC4xIDgwLjQsNTQuMSA4MC40LDUxLjYg%0D%0AIiBmaWxsPSIjZmZmZmZmIi8+CiA8L2c+Cjwvc3ZnPg==" class="second__b" id="btn">
+                  <div class="second__content">
+
+                  </div>
+                </div>
+              </div>
+              <mat-list>
+                <h3 mat-subheader>Catechism</h3>
+                <mat-list-item *ngFor="let folder of folders">
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <h4 mat-line>{{folder.name}}</h4>
+                  <p mat-line> {{folder.updated | date}} </p>
+                </mat-list-item>
+
+              </mat-list>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+              <div class="table-responsive">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th><b>Novena</b></th>
+                      <th><b>Description</b></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Day Care</td>
+                      <td>This is the amazing new Gadget Alpha.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Kindergarten</td>
+                      <td>Also available is the Gadget Bravo which provides B.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Primary</td>
+                      <td>This is the lorem ipsumist Gadget Charlie.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Secondary</td>
+                      <td>Also available is the Gadget Bravo which provides B.</td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th><b>Novena</b></th>
+                      <th><b>Description</b></th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Day Care</td>
+                      <td>This is the amazing new Gadget Alpha.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Kindergarten</td>
+                      <td>Also available is the Gadget Bravo which provides B.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Primary</td>
+                      <td>This is the lorem ipsumist Gadget Charlie.</td>
+
+                    </tr>
+                    <tr>
+                      <td>Secondary</td>
+                      <td>Also available is the Gadget Bravo which provides B.</td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+            <div class="col-md-1" ></div>
+            <div col-md-6>
+              <mat-accordion>
+
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    This is the expansion 1 title
+                  </mat-expansion-panel-header>
+
+                  This the expansion 1 content
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <p>Emmerging Trends</p>
+                  </mat-expansion-panel-header>
+                  <mat-list>
+
+                   
+                    <mat-list-item *ngFor="let note of notes">
+                      <mat-icon mat-list-icon>note</mat-icon>
+                      <h4 mat-line>{{note.name}}</h4>
+                      <p mat-line> {{note.updated | date}} </p>
+                    </mat-list-item>
+                  </mat-list>
+
+                </mat-expansion-panel>
+
+              </mat-accordion>
+            
+            
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+     
+
+
+      </div>
+      <div class="page-header">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-24">
+              <h1>Healing &amp; Deliverance</h1>
+              <ul class="nav nav-pills" data-scroll="smooth">
+                <li role="presentation">
+                  <a href="#roman">Roman Catholic Views</a>
+                </li>
+                <li role="presentation">
+                  <a href="#deliverance">Deliverance</a>
+                </li>
+                <li role="presentation">
+                  <a href="#headings">Healing</a>
+                </li>
+                <li role="presentation">
+                  <a href="#subheadings">Exorcism</a>
+                </li>
+                <li role="presentation">
+                  <a href="#paragraphs">The Ten Commandments</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+
+    </div>
+    <div role="tabpanel" class="tab-pane" id="upcoming">
+
+      <div class="container">
+
+        <p class="text-center">Only Montessorri is offered at Lavington </p>
+        <hr />
+        <div class="row" id="captions">
+          <div class="col-xs-24">
+            <div class="row">
+              <div class="col-xs-24">
+
+                <h1> Classes</h1>
+                <div class="col-xs-24 col-md-12 m-t-xxs">
+                  <div class="type-t1 inline-block">Ndovu</div>
+                  <div class="type-t2 inline-block m-l-xs">Kifaru</div>
+                  <div class="type-t3 inline-block m-l-xs">Simba</div>
+                  <div class="type-t4 inline-block m-l-xs">Chui</div>
+                  <div class="type-t5 inline-block m-l-xs"> Crèche</div>
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row m-t-sm">
+              <div class="col-md-12">
+                <div class="table-responsive">
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Day Care</td>
+                        <td>This is the amazing new Gadget Alpha.</td>
+
+                      </tr>
+                      <tr>
+                        <td>Kindergarten</td>
+                        <td>Also available is the Gadget Bravo which provides B.</td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-sm-24">
+
+
+                    <p class="type-p4">
+                      Montessori students learn through hands on experiences, experiments and research.  They become actively engaged in their work rather than passively waiting to be spoon fed.  Students develop self-discipline and an internal sense of purpose and motivation.  After graduation from Montessori education, these values serve them well in higher learning and their lives as adults.  Incorporating the ACE curriculum, students are prepared join ACE curriculum school for      primary or any other curriculum.  Our students have joined schools offering 8-4-4 and IGCSE curriculum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="lavington">
+
+      <div class="container">
+
+        <p class="text-center">Only Montessorri is offered at Lavington </p>
+        <hr />
+        <div class="row" id="captions">
+          <div class="col-xs-24">
+            <div class="row">
+              <div class="col-xs-24">
+
+                <h1> Classes</h1>
+                <div class="col-xs-24 col-md-12 m-t-xxs">
+                  <div class="type-t1 inline-block">Ndovu</div>
+                  <div class="type-t2 inline-block m-l-xs">Kifaru</div>
+                  <div class="type-t3 inline-block m-l-xs">Simba</div>
+                  <div class="type-t4 inline-block m-l-xs">Chui</div>
+                  <div class="type-t5 inline-block m-l-xs"> Crèche</div>
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row m-t-sm">
+              <div class="col-md-12">
+                <div class="table-responsive">
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Class</th>
+                        <th>Description</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Day Care</td>
+                        <td>This is the amazing new Gadget Alpha.</td>
+
+                      </tr>
+                      <tr>
+                        <td>Kindergarten</td>
+                        <td>Also available is the Gadget Bravo which provides B.</td>
+
+                      </tr>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-sm-24">
+
+
+                    <p class="type-p4">
+                      Montessori students learn through hands on experiences, experiments and research.  They become actively engaged in their work rather than passively waiting to be spoon fed.  Students develop self-discipline and an internal sense of purpose and motivation.  After graduation from Montessori education, these values serve them well in higher learning and their lives as adults.  Incorporating the ACE curriculum, students are prepared join ACE curriculum school for      primary or any other curriculum.  Our students have joined schools offering 8-4-4 and IGCSE curriculum.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

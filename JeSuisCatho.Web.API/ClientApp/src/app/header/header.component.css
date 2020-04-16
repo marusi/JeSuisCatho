@@ -1,0 +1,98 @@
+
+.fixedHeader.affix {
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+
+}
+.alert-stack.affix {
+
+}
+
+.alert-stack {
+  background-color: #FFFFFF;
+
+}
+
+  .alert-stack.affix {
+    top: 0;
+    width: 100%;
+
+    z-index: 1000;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    background-color: rgba(254, 254, 254, 254, 0.32);
+  }
+
+  .alert-stack .alert {
+    margin: 0 0 1px 1px;
+    padding-right: 10px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px;
+  }
+
+    .alert-stack .alert p {
+      font-size: 13px;
+      font-weight: 400;
+      font-family: "Segoe UI", "Selawik", Tahoma, Verdana, Arial, sans-serif;
+      letter-spacing: normal;
+      margin-bottom: 0;
+      padding-top: 4px;
+    }
+
+
+.entity-list-item .item-icon {
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: #6e9173;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  background-color: rgba(254, 254, 254, 254, 0.32);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+  color: #fff;
+}
+
+  .entity-list-item .item-icon:hover {
+    background: #fff;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    background-color: rgba(254, 254, 254, 254, 0.32);
+    color: #7caf50;
+  }
+
+.entity-list-item:hover {
+  color: #6e9173;
+  background: #b6ff00;
+  z-index: 1000;
+}
+
+.entity-list .entity-list-item .item-content-primary .item-content-secondary {
+  margin: 12px 12px 0 0px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.entity-list .entity-list-item .content-text-primary,
+.entity-list .entity-list-item {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: "Segoe UI", "Selawik", Tahoma, Verdana, Arial, sans-serif;
+  letter-spacing: normal;
+  line-height: 1.33333;
+}
+
+.content-text-secondary {
+  font-size: 7px;
+  font-weight: 100;
+  font-family: "Segoe UI", "Selawik", Tahoma, Verdana, Arial, sans-serif;
+  letter-spacing: normal;
+  line-height: 1.33333;
+  color: white;
+}

@@ -1,0 +1,188 @@
+
+
+
+
+
+
+
+
+  <div class="row">
+
+    <div class="col-sm-6  ">
+      <form #f="ngForm" (ngSubmit)="submitChurch()">
+        <ol class="list-items">
+          <li class="list-items-row">
+            <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-1">
+           
+                <div class="row ">
+                  <div class="col-md-24 ">
+                    Archdiocese
+                    <i class="glyph glyph-chevron-right"></i>
+                    <i class="glyph glyph-chevron-down"></i>
+
+                  </div>
+                </div>
+                <div class="col-md-12 ">
+
+               
+              </div>
+            </div>
+            <div class="collapse" id="list-item-line-1">
+              <div class="row">
+                <div class="col-md-18 col-md-offset-2 color-type-secondary">
+
+                  <div class="row">
+                    <h5>Select</h5>
+
+                    <div class="form-group">
+                      <label for="archDioceseId">ArchDiocese: </label>
+                      <select id="archDioceseId" [(ngModel)]="church.archDioceseId" name="archDioceseId" required #archDiocese="ngModel" (change)="onArchDioceseChange()" class="form-control">
+                        <option value="">ArchDiocese is blank :(-</option>
+                        <option *ngFor="let a of archDioceses" value="{{a.id}}"> {{ a.name }} </option>
+
+                      </select>
+                      <p class="alert alert-danger" *ngIf="archDiocese.touched && !archDiocese.valid">Please specify the ArchDiocese.</p>
+                    </div>
+
+
+
+                  </div>
+
+
+
+                  <div class="row">
+
+
+
+
+
+                    <div class="form-group">
+                      <label for="diocese">Diocese:</label>
+                      <select id="dioceseId" name="dioceseId" [(ngModel)]="church.dioceseId" (change)="onDioceseChange()" class="form-control">
+                        <option value="">Diocese is blank :(-</option>
+                        <option *ngFor="let d of dioceses" value="{{ d.id }}"> {{ d.name }} </option>
+
+                      </select>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="diocese">Deanery:</label>
+                      <select id="deaneryId" name="deaneryId" [(ngModel)]="church.deaneryId" class="form-control">
+                        <option value="">Deanery is blank :(-</option>
+                        <option *ngFor="let d of deaneries" value="{{ d.id }}"> {{ d.name }} </option>
+
+                      </select>
+
+                    </div>
+
+
+                  </div>
+
+
+
+                </div>
+                <div class="col-md-4 ">
+
+                </div>
+              </div>
+            </div>
+
+          </li>
+
+          <li class="list-items-row">
+            <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-2">
+              <div class="row">
+                <div class="col-md-24 ">
+                 Parish Status &amp; County 
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="collapse" id="list-item-line-2">
+              <div class="row">
+                <div class="col-md-18 col-md-offset-2 color-type-secondary">
+
+                  <div class="row">
+                    <h5>Select</h5>
+
+                    <div class="form-group">
+                      <label for="divisionId">Status: </label>
+                      <select id="divisionId" [(ngModel)]="church.divisionId" name="divisionId" required #division="ngModel" class="form-control">
+                        <option value="">Status is blank :(-</option>
+                        <option *ngFor="let d of divisions" value="{{d.id}}"> {{ d.name }} </option>
+
+                      </select>
+                      <p class="alert alert-danger" *ngIf="division.touched && !division.valid">Please specify the ArchDiocese.</p>
+                    </div>
+
+
+
+                  </div>
+
+
+
+                  <div class="row">
+
+
+
+
+
+                    <div class="form-group">
+                      <label for="county">County Location:</label>
+                      <select id="countyId" name="countyId" [(ngModel)]="church.countyId"  class="form-control">
+                        <option value="">County is blank :(-</option>
+                        <option *ngFor="let c of counties" value="{{ c.id }}"> {{ c.name }} </option>
+
+                      </select>
+
+                    </div>
+
+                  
+
+
+                  </div>
+
+
+
+                </div>
+                <div class="col-md-4 ">
+
+                </div>
+              </div>
+            </div>
+          </li>
+
+
+        </ol>
+
+
+
+
+
+      </form>
+    </div>
+    <div class="col-sm-8">
+      <h1>www.post</h1>
+      <h3  class="type-p3 text-center">{{ church | json}}</h3>
+
+    </div>
+
+    <div class="col-sm-8">
+
+ 
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+
+

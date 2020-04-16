@@ -1,0 +1,125 @@
+
+
+
+<div class="jumbotron theme-alt color-banner">
+
+
+    <div class="row section-gallery">
+    <div class="col-md-24 ">
+
+
+          <div class="col-md-3">
+
+
+          </div>
+          <div class="col-md-18 well  hoverwell">
+
+            <form #f="ngForm" (ngSubmit)="submitRegister()" novalidate id="add-register-form" action="">
+
+
+              <div class="col-md-8 ">
+
+
+                <span class="input input--yoshiko">
+
+                  <input name="firstName" id="firstName" [(ngModel)]="account.firstName" class="input__field input__field--yoshiko" type="text" />
+                  <label class="input__label input__label--yoshiko" for="first_name">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="First Name">First Name</span>
+                  </label>
+                </span>
+
+
+                <span class="input input--yoshiko">
+                  <input name="phoneNumber" id="phoneNumber" [(ngModel)]="account.phoneNumber" class="input__field input__field--yoshiko" type="number" />
+                  <label class="input__label input__label--yoshiko" for="input-14">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="Phone Number">Phone Number</span>
+                  </label>
+                </span>
+
+
+                <span class="input input--yoshiko">
+                  <input name="password" id="password" [(ngModel)]="account.password" class="input__field input__field--yoshiko" type="password" />
+                  <label class="input__label input__label--yoshiko" for="input-15">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="Password">Password</span>
+                  </label>
+                </span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+              <div class="col-md-8 ">
+
+
+
+
+
+
+                <span class="input input--yoshiko">
+                  <input name="lastName" id="lastName" [(ngModel)]="account.lastName" class="input__field input__field--yoshiko" type="text" />
+                  <label class="input__label input__label--yoshiko" for="input-14">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="Last Name">Last Name</span>
+                  </label>
+                </span>
+
+
+
+                <span class="input input--yoshiko">
+                  <input [(ngModel)]="account.email" class="input__field input__field--yoshiko" type="email" name="email" id="email" />
+                  <label class="input__label input__label--yoshiko" for="input-14">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="Email Address">Email</span>
+                  </label>
+                </span>
+
+
+                <span class="input input--yoshiko">
+                  <input name="confirmPassword" id="confirmPassword" [(ngModel)]="account.confirmPassword" class="input__field input__field--yoshiko" type="password" />
+                  <label class="input__label input__label--yoshiko" for="input-15">
+                    <span class="input__label-content input__label-content--yoshiko" data-content="Confirm Password">Confirm Password</span>
+                  </label>
+                </span>
+
+
+
+
+
+
+
+
+
+
+
+              </div>
+              <div class="col-md-8 well hoverwell ">
+                <p class="color-type-secondary"> Already Registered? <a class="label label-danger" [routerLink]='["/signin"]'>Sign in</a></p>
+                <hr />
+                <p>We promise to bring in third party log in</p>
+
+              </div>
+              
+              <button autocomplete="off" class="btn btn-default" data-toggle="button" aria-pressed="false" type="submit">Sign Up</button>
+
+            </form>
+          </div>
+
+          <div class="col-md-3 "> </div>
+
+
+
+      </div>
+
+      </div>
+
+
+
+
+</div>

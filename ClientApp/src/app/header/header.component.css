@@ -1,0 +1,22 @@
+
+#fixedHeader {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.fixedHeader.affix {
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(15px);
+  color: #fff;
+  backdrop-filter: blur(15px);
+  background-color: rgba(13, 10, 126, 0.50);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

@@ -1,0 +1,327 @@
+
+
+<div class="container ">
+  <div class="row">
+    <h1 class="type-h1"> </h1>
+  </div>
+</div>
+
+
+
+<div class="container  m-t-xs">
+  <div class="row">
+
+
+    <div class="col-md-6 text-center">
+      <h1 class="type-h3"><i class="glyph glyph-add"></i> Add New Info.</h1>
+      <p class="type-p6 color-type-alert">This section is reserved for school administrators</p>
+       <p>{{ article | json }}</p>
+
+
+    </div>
+    <div class="col-md-18 ">
+      <h1 class="type-h6 color-type-secondary">Information related to new events, administrative</h1>
+
+      <form #f="ngForm" (ngSubmit)="submitArticle()" novalidate id="add-newsandevent-form" action="">
+       
+
+          <ol class="list-items">
+            <li class="list-items-row">
+              <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-1">
+                <div class="row">
+                  <div class="col-md-24 type-p5">
+
+
+                    <i class="glyph glyph-preview-link"></i>
+                    Select Edit Group
+
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="collapse" id="list-item-line-1">
+                <div class="row">
+
+                  <div class="col-md-2 "></div>
+                  <div class="col-md-10 ">
+                    <div class="row">
+                      <div class="form-group">
+                        <label for="newsevent">Presentation:</label>
+                        <select id="newsEvent" name="newsEventId" [(ngModel)]="article.newsEventId" (change)="onNewsEventChange()" class="form-control">
+                          <option value="">Presentation is blank :(-</option>
+                          <option *ngFor="let n of newsandevents " value="{{ n.id }}"> {{ n.name}} </option>
+
+                        </select>
+
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-md-12">
+
+                    <div class="form-group">
+                      <label for="newsCategories">Type :</label>
+                      <select name="newsCategoryId" [(ngModel)]="article.newsCategoryId" id="newsCategoryId" class="form-control">
+                        <option value="">Auto-Update is blank :(-</option>
+                        <option *ngFor="let n of newsCategories" value="{{ n.id }}"> {{ n.name}} </option>
+
+                      </select>
+
+                    </div>
+
+
+
+
+                  </div>
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+
+            </li>
+            <li class="list-items-row">
+              <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-2">
+                <div class="row">
+                  <div class="col-md-24 type-p5">
+
+
+                    <i class="glyph glyph-edit "></i>
+                    Description
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="collapse" id="list-item-line-2">
+                <div class="row">
+                  <ol class="list-items">
+                    <li class="list-items">
+                      <div class="row">
+                        <div class="col-md-2 "></div>
+
+                        <div class="col-md-10 ">
+                          <div class="row row-sm">
+
+                            <div class="form-group">
+                              <label for="title">Title</label>
+                              <input [(ngModel)]="article.ambaco.title" name="ambacoTitle" type="text" class="form-control" id="ambacoTitle" placeholder="title">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="Subtitle">Sub Title</label>
+                              <input [(ngModel)]="article.ambaco.subTitle" name="ambacoSubTitle" type="text" class="form-control" id="ambacoSubTitle" placeholder="SubTitle">
+                            </div>
+                          </div>
+
+
+
+
+
+
+                        </div>
+
+                        <div class="col-md-12 ">
+
+                          <div class="form-group">
+                            <label for="body">Body </label>
+                            <textarea [(ngModel)]="article.ambaco.body" id="ambacoBody" name="ambacoBody" style="height:150px;" type="text" class="form-control" placeholder="Type or paste content here"></textarea>
+                          </div>
+                        </div>
+
+                      </div>
+                    </li>
+                  </ol>
+
+
+                </div>
+              </div>
+            </li>
+            <li class="list-items-row">
+              <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-3">
+                <div class="row">
+                  <div class="col-md-24 type-p5">
+
+
+                    <i class="glyph glyph-calendar-day"></i>
+                    Schedule
+
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="collapse" id="list-item-line-3">
+                <div class="row">
+
+
+
+                  <div class="col-md-2"></div>
+
+                  <div class="col-md-10">
+
+
+
+                    <div class="row">
+                      <div class="putbox">
+                        <div class="putbox-icon">
+                          <span class="glyph glyph-calendar-day"></span>
+                        </div>
+                        <div class="putbox-content">
+                          <div class="content-title">Date of Event:</div>
+
+                        
+                          <mat-form-field>
+                            <input id="ambacoDateOfEvent" name="ambacoDateOfEvent" [(ngModel)]="article.ambaco.dateOfEvent" matInput [matDatepicker]="picker" placeholder="Choose date for event">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+
+
+                        </div>
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+                  <div class="col-md-12">
+
+
+                    <div class="putbox">
+                      <div class="putbox-icon">
+                        <span class="glyph glyph-clock"></span>
+                      </div>
+                      <div class="putbox-content">
+                        <div class="content-title">Time format:</div>
+
+                        <input [(ngModel)]="article.ambaco.duration" id="duration" name="duration" type="text" class="form-control" placeholder="8:00 am - 4:30 pm" />
+
+
+
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+
+                </div>
+              </div>
+
+            </li>
+
+
+
+
+
+            <li class="list-items-row">
+              <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-4">
+                <div class="row">
+                  <div class="col-md-24 type-p5">
+
+                    <i class="glyph glyph-go "></i>
+                    Select School Branch
+                    <span class="type-p6 color-type-secondary">School Details</span>
+
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="collapse" id="list-item-line-4">
+
+
+                <div class="row">
+
+                  <div class="col-md-2"></div>
+
+                  <div class="col-md-10">
+                    <p>Information relates to?</p>
+                    <div class="form-group">
+                      <h5> Location</h5>
+                      <div class="checkbox" *ngFor="let c of counties">
+                        <label for="county{{ c.id }}">
+                          <input type="checkbox" (change)="onCountyToggle(c.id, $event)" id="county{{ c.id }}" [checked]="article.counties.includes(c.id)">
+                          <span>{{ c.name }}</span>
+                        </label>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <p>Are Clients required to come to the branches?</p>
+                      <br />
+                      <label class="radio-inline">
+                        <input type="radio" name="Invited" [(ngModel)]="article.isInvited" id="Invited" value="true">
+                        <span>Yes</span>
+                      </label>
+
+
+
+                      <label class="radio-inline" for="notInvited">
+                        <input type="radio" name="Invited" id="notInvited" [(ngModel)]="article.isInvited" value="false">
+                        <span>No</span>
+                      </label>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+
+            </li>
+
+            <li class="list-items-row">
+              <div class="row">
+                <div class="col-md-24">
+
+                  <div class="btn-group navbar-right">
+
+                    <button class="btn btn-block btn-secondary color-type-accent-alt" href="#">Save</button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ol>
+        </form>
+</div>
+  </div>
+</div>
+
+
