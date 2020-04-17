@@ -13,9 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
-
 using JeSuisCatho.Web.API.Persistence;
-
 using JeSuisCatho.Web.API.Core.Models;
 using JeSuisCatho.Web.API.Core.Services;
 using JeSuisCatho.Web.API.Controllers;
@@ -104,18 +102,7 @@ namespace JeSuisCatho.Web.API
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            /*   // 1. Add Authentication Services
-               services.AddAuthentication(options =>
-               {
-                   options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                   options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-               }).AddJwtBearer(options =>
-               {
-                   options.Authority = "https://dev-4uad5080.auth0.com/";
-                   options.Audience = "http://bunksandbiddles.gearhostpreview.com/api";
-               });
-
-       */
+          
 
         }
 
@@ -140,7 +127,7 @@ namespace JeSuisCatho.Web.API
 
             //  app.UseRouting();
             // app.UseRequestLocalization();
-            // app.UseCors();
+             app.UseCors();
 
             app.UseAuthentication();
             //  app.UseAuthorization();

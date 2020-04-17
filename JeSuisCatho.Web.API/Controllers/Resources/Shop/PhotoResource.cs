@@ -12,7 +12,7 @@ namespace JeSuisCatho.Web.API.Controllers.Resources.Shop
 
         public string PhotoFileName { get; set; }
 
-       public int ProductId { get; set; }
+   
 
     }
 

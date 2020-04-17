@@ -25,18 +25,18 @@ namespace Veewd.Controllers
         private readonly IProductRepository productRepository;
         private readonly IPhotoRepository photoRepository;
         private readonly IMapper mapper;
-       private readonly IUnitOfWork unitOfWork;
+      
         private readonly PhotoSettings photoSettings;
         private readonly IPhotoService photoService;
         public PhotosController(IHostingEnvironment host, IProductRepository productRepository, 
-           IMapper mapper, IUnitOfWork unitOfWork, IPhotoService photoService, IOptionsSnapshot<PhotoSettings> options,
+           IMapper mapper,  IPhotoService photoService, IOptionsSnapshot<PhotoSettings> options,
             IPhotoRepository photoRepository)
         {
             this.photoSettings = options.Value;
             this.host = host;
             this.productRepository = productRepository;
             this.photoRepository = photoRepository;
-            this.unitOfWork = unitOfWork;
+           
             this.photoService = photoService;
             this.mapper = mapper;
         }
@@ -67,23 +67,11 @@ namespace Veewd.Controllers
             if (!photoSettings.IsSupported(file.FileName)) return BadRequest("File type is invalid");
 
             var uploadsFolderPath = Path.Combine(host.WebRootPath, "photoUploads");
-            if (!Directory.Exists(uploadsFolderPath))
-                Directory.CreateDirectory(uploadsFolderPath);
 
-            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-
-          var filePath =  Path.Combine(uploadsFolderPath, fileName);
-
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-               await file.CopyToAsync(stream);
-            }
-
-            var photo = new Photo { PhotoFileName = fileName };
-            product.Photos.Add(photo);
-           await unitOfWork.CompleteAsync();
+            var photo = await photoService.UploadPhoto(product, file, uploadsFolderPath);
 
             return Ok(mapper.Map<Photo, PhotoResource>(photo));
+
         }
     }
 }

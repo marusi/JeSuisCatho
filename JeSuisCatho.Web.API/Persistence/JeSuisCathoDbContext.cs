@@ -54,7 +54,7 @@ namespace JeSuisCatho.Web.API.Persistence
                 new { al.ArticleId, al.LocationId });
             modelBuilder.Entity<ProductSupplier>().HasKey(ps =>
                 new { ps.ProductId, ps.SupplierId });
-            modelBuilder.Entity<Photo>().HasKey(s => s.ProductId);
+     
 
 
         }

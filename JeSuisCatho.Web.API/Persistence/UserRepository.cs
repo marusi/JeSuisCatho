@@ -92,7 +92,6 @@ namespace JeSuisCatho.Web.API.Persistence
             var claims = new[]
             {
                 new Claim("Email", model.Email),
-              //  new Claim("FirstName", model.),
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, user.UserName)
                
