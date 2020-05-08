@@ -17,7 +17,8 @@ using JeSuisCatho.Web.API.Persistence;
 using JeSuisCatho.Web.API.Core.Models;
 using JeSuisCatho.Web.API.Core.Services;
 using JeSuisCatho.Web.API.Controllers;
-using JeSuisCatho.Shared;
+// using JeSuisCatho.Shared;
+
 using NSwag.AspNetCore;
 using NJsonSchema;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,6 +27,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using JeSuisCatho.Web.API.Core.Models.Shop;
 using Microsoft.AspNetCore.Http;
+using JeSuisCatho.Web.API.Persistence.DataAccess;
 
 namespace JeSuisCatho.Web.API
 {
@@ -54,6 +56,7 @@ namespace JeSuisCatho.Web.API
             services.AddTransient<IPhotoService, PhotoService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IPhotoStorage, FileSystemPhotoStorage>();
+            services.AddTransient<ICartService, CartDataAccessLayer>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger services
@@ -61,7 +64,9 @@ namespace JeSuisCatho.Web.API
             services.AddAutoMapper();
             services.AddRouting(Options => Options.LowercaseUrls = true);
             services.AddDbContext<JeSuisCathoDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-           
+        
+
+
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -140,6 +145,7 @@ namespace JeSuisCatho.Web.API
             app.UseOpenApi();
 
             app.UseSwaggerUi3();
+         
             app.UseSpaStaticFiles();
 
 

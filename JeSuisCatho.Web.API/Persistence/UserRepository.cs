@@ -10,7 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using JeSuisCatho.Shared;
+using JeSuisCatho.Web.API.ViewModel;
 using System.Diagnostics;
 
 using Microsoft.AspNetCore.Http;
@@ -124,5 +124,7 @@ namespace JeSuisCatho.Web.API.Persistence
              };
 
         }
+
+      
     }
 }

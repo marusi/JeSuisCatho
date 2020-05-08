@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { transition, trigger, query, style, animate } from '@angular/animations';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -38,7 +39,9 @@ export class AppComponent {
 
 
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+   // this.authService.setUserDetails();
+  }
   title = 'app';
   isExpanded = false;
 

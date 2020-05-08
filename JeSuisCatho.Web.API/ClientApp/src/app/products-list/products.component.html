@@ -1,0 +1,105 @@
+
+
+
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><h3>Kiosk &amp; Kibanda</h3></th>
+        <th></th>
+        <th class="text-right">
+          Season just gets better
+        
+        </th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="row section-gallery">
+    <div class="col-md-8" *ngFor="let p of products">
+      <div class="well  hoverwell thumbnail color-line-neutral-high" >
+        <div class="table-responsive">
+          <div class="col-md-8">
+            <!--     <div  *ngFor="let photo of photos">
+
+  <br />
+  <figure class="media">
+    <div class="media-img media-img-has-play ratio-movie">
+
+     <img src="/photoUploads/{{ photo.photoFileName }}" alt="{{ photo.photoFileName }}" />
+
+
+     </div>
+            </figure>
+          </div> -->
+          </div>
+          <div class="col-md-16">
+            <div class="type-h4">
+              {{ p.info.productName }}
+            </div>
+            <div class="color-type-secondary">
+              <p class="type-p4"><small>{{ p.info.productDescription }}</small> </p>
+            </div>
+          </div>
+
+
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th></th>
+                <th class="text-right">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td><a [routerLink]="['/product/', p.id]">View details</a></td>
+                <td></td>
+                <td class="text-right">
+                  <div class="media-price">
+                     {{ p.sell.unitPrice  | currency : 'KES'}}
+                  </div>
+                </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+          <div class="table-responsive">
+            <table class="table">
+
+              <tbody>
+
+                <tr>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td class="text-right">
+                    <app-addtocart [productId]="p.id"></app-addtocart>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  
+
+
+
+  </div>
+
+
+</div>
+
+
+

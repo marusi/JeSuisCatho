@@ -18,7 +18,7 @@ namespace JeSuisCatho.Web.API.Controllers
 {
     [Route("api/products")]
     [ApiController]
-    [Authorize]
+    
     public class ProductsController : Controller
     {
         private readonly IMapper mapper;
@@ -43,6 +43,7 @@ namespace JeSuisCatho.Web.API.Controllers
 
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateProduct([FromBody] SaveProductResource productResource)
         {
 
@@ -68,6 +69,7 @@ namespace JeSuisCatho.Web.API.Controllers
 
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateProduct(int id, [FromBody] SaveProductResource productResource)
         {
 
@@ -92,6 +94,8 @@ namespace JeSuisCatho.Web.API.Controllers
 
 
         [HttpDelete("{id}")]
+        [Authorize]
+
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var product = await repository.GetProduct(id, includeRelated: false);

@@ -1,0 +1,55 @@
+
+
+
+<app-header></app-header>
+
+<div class="container">
+
+  <div class="row section-gallery">
+    <div class="col-md-24">
+      <div class="well  thumbnail color-line-neutral-high">
+        <div class="row section-gallery">
+          <div class="col-md-6" *ngFor="let photo of photos">
+
+            <br />
+            <figure class="media">
+              <div class="media-img media-img-has-play ratio-movie">
+
+                <img src="/photoUploads/{{ photo.photoFileName }}" alt="{{ photo.photoFileName }}" />
+
+
+              </div>
+            </figure>
+          </div>
+
+
+          <div class="col-md-12">
+
+            <h2><b>{{ product.info.productName }}</b></h2>
+            <h3>{{ product.info.productDescription }}</h3>
+            <p class="color-type-secondary">{{ product.info.note }}</p>
+          </div>
+          <div class="col-md-6">
+            <h5><b> {{ product.sell.unitPrice  | currency : 'KES'}}</b></h5>
+            <app-addtocart [productId]="product.id"></app-addtocart>
+            <p>Free deliveries in Kimbo &amp; Umoja</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+</div>
+
+

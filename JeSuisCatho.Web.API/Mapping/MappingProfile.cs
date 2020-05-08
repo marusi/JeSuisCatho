@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using JeSuisCatho.Shared;
+using JeSuisCatho.Web.API.Core.Models.User;
 using JeSuisCatho.Web.API.Controllers.Resources;
 using JeSuisCatho.Web.API.Controllers.Resources.Shop;
 using JeSuisCatho.Web.API.Core.Models;

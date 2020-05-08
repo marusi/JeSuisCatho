@@ -3,14 +3,9 @@ import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Profile } from '../models/profile';
 
 
-export interface Profile {
-  Id: string;
-  Email: string;
-  Name: string;
-  
-}
 
 @Component({
   selector: 'app-header',
@@ -20,7 +15,13 @@ export interface Profile {
 
 export class HeaderComponent implements OnInit {
   
-  profile: Profile[];
+  profile: Profile = {
+    id: '',
+    email: '',
+    name: '',
+    isLoggedIn: false,
+    cartCount: 0
+  };
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -34,6 +35,7 @@ export class HeaderComponent implements OnInit {
     this.prof.getProfile().subscribe(profile => {
 
       this.profile = profile;
+      this.profile.cartCount = profile.cartCount;
     }, error => console.log(error));
 
   // this.auth.tryFunct();

@@ -1,5 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
+import { SubscriptionService } from './subscription.service';
+import { ProfileService } from './profile.service';
+import { Profile } from '../models/profile';
+
+
 // import { tokenNotExpired } from 'angular2-jwt';
 
 
@@ -7,24 +13,39 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 
-export class AuthService {
-
+export class AuthService implements OnInit {
+  profile: Profile;
+  oldUserId;
   //Constants
   private readonly registerEndpoint = '/api/auth/register';
   private readonly loginEndpoint = '/api/auth/login';
  
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private profileService: ProfileService,
 
+    private subscriptionService: SubscriptionService
+  ) {
+    
+  }
+
+  ngOnInit(): void {
+
+  
+
+    // this.auth.tryFunct();
+  }
   create(account) {
     return this.http.post(this.registerEndpoint, account);
   }
   login(account) {
-    return this.http.post(this.loginEndpoint, account);
+    return this.http.post(this.loginEndpoint, account)
+  
     
   }
 
- 
+
 
 
   logout() {
@@ -45,6 +66,8 @@ export class AuthService {
     } else {
       // token valid
       console.log("token valid")
+
+
       return true
     }
 
@@ -70,6 +93,8 @@ export class AuthService {
   tryFunct() {
     this.authenticated(this.getToken())
   }
+
+
   
 
 }

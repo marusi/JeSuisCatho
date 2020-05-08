@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeSuisCatho.Phone", "..\JeS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebService", "WebService", "{1E4B99B4-652C-486F-A8EA-90304756EDAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JeSuisCatho.Web.API", "JeSuisCatho.Web.API\JeSuisCatho.Web.API.csproj", "{C32288C0-1A4E-4275-9E0F-731CD87DE6B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JeSuisCatho.Web.API", "JeSuisCatho.Web.API\JeSuisCatho.Web.API.csproj", "{C32288C0-1A4E-4275-9E0F-731CD87DE6B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

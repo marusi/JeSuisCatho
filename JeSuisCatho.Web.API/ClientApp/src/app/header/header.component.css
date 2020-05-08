@@ -1,48 +1,93 @@
 
-.fixedHeader.affix {
+.alert-stack.affix {
   top: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-
-}
-.alert-stack.affix {
-
 }
 
-.alert-stack {
-  background-color: #FFFFFF;
-
+.app-toolbar {
+  position: sticky;
+  position: -webkit-sticky; /* For macOS/iOS Safari */
+  top: 0; /* Sets the sticky toolbar to be on top */
+  z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
 }
 
-  .alert-stack.affix {
-    top: 0;
-    width: 100%;
+.example-spacer {
+  flex: 1 1 auto;
+}
 
-    z-index: 1000;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    background-color: rgba(254, 254, 254, 254, 0.32);
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.tryx {
+  background: #fff;
+  color: #263956;
+  z-index: 1000;
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  background-color: rgba(254, 254, 254, 254, 0.32);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+}
+
+.menu {
+  height: 100%;
+  overflow: hidden;
+  font-size: 0.75em;
+}
+
+.icon-list {
+  float: right;
+  padding: 0.25em 0.2em 0 0.6em;
+  color: #263956;
+}
+
+  .icon-list a {
+    display: inline-block;
+    padding: 0.8em;
+    color: #263956;
   }
 
-  .alert-stack .alert {
-    margin: 0 0 1px 1px;
-    padding-right: 10px;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 2px;
-  }
-
-    .alert-stack .alert p {
-      font-size: 13px;
-      font-weight: 400;
-      font-family: "Segoe UI", "Selawik", Tahoma, Verdana, Arial, sans-serif;
-      letter-spacing: normal;
-      margin-bottom: 0;
-      padding-top: 4px;
+    .icon-list a span {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 0.75em;
+      vertical-align: middle;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #263956;
     }
+
+    .icon-list a i {
+      vertical-align: middle;
+    }
+
+    .icon-list a:hover,
+    .icon-list a:focus,
+    .icon-list a span:hover,
+    .icon-list a span:focus {
+      color: #c94e50;
+      border-bottom: 5px;
+    }
+
+
+
+
+@media screen and (max-width: 50em) {
+  .icon-list a {
+    padding: 0.5em 0em;
+    margin: 0 5px;
+    font-size: 1em;
+  }
+
+    .icon-list a span {
+      display: none;
+    }
+}
+
 
 
 .entity-list-item .item-icon {
@@ -96,3 +141,4 @@
   line-height: 1.33333;
   color: white;
 }
+

@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { SubscriptionService } from '../services/subscription.service'
+
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProfileService } from '../services/profile.service';
 import { ToastrService } from 'ngx-toastr';
+import { Profile } from '../models/profile';
 
 
 @Component({
@@ -11,8 +14,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./signin.component.css']
 })
 
-export class SigninComponent implements OnInit {
-
+export class SigninComponent {
+  oldUserId;
+  profile: Profile;
   private account = {
     email: '',
     password: ''
@@ -24,24 +28,24 @@ export class SigninComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private toastrService: ToastrService,
+    private profService: ProfileService,
+    private subscriptionService: SubscriptionService,
     private authService: AuthService) {
 
   }
 
-      ngOnInit() : void {
-
-
-
-       }
+     
 
   submitCredentials() {
     this.authService.login(this.account).subscribe(res => {
 
 
-      for (let [key, value] of Object.entries(res)) {
+      for (const [key, value] of Object.entries(res)) {
        
         if (key === "message") {
-          localStorage.setItem('token', value)
+          localStorage.setItem('token', value);
+    
+         
         }
       }
     

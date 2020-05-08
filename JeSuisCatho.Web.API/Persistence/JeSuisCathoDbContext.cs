@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using JeSuisCatho.Web.API.Core.Models;
 using JeSuisCatho.Web.API.Core.Models.Shop;
 using Microsoft.EntityFrameworkCore.Design;
@@ -35,7 +36,10 @@ namespace JeSuisCatho.Web.API.Persistence
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Document> Documents { get; set; }
 
-      
+        public DbSet<Cart> Cart { get; set; }
+        public  DbSet<CartItem> CartItems { get; set; }
+
+
 
 
         public JeSuisCathoDbContext(DbContextOptions<JeSuisCathoDbContext> options)
@@ -54,7 +58,28 @@ namespace JeSuisCatho.Web.API.Persistence
                 new { al.ArticleId, al.LocationId });
             modelBuilder.Entity<ProductSupplier>().HasKey(ps =>
                 new { ps.ProductId, ps.SupplierId });
-     
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.Property(e => e.CartId)
+                    .HasMaxLength(36)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.DateCreated).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+            });
+
+            modelBuilder.Entity<CartItem>(entity =>
+            {
+                entity.HasKey(e => e.CartItemId)
+                    .HasName("PK__CartItem__488B0B0AA0297D1C");
+
+                entity.Property(e => e.CartId)
+                    .IsRequired()
+                    .HasMaxLength(36)
+                    .IsUnicode(false);
+            });
 
 
         }

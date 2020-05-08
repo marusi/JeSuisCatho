@@ -243,6 +243,45 @@ namespace JeSuisCatho.Web.API.Migrations
                     b.ToTable("NewsEvents");
                 });
 
+            modelBuilder.Entity("JeSuisCatho.Web.API.Core.Models.Shop.Cart", b =>
+                {
+                    b.Property<string>("CartId")
+                        .ValueGeneratedOnAdd()
+                        .HasMaxLength(36)
+                        .IsUnicode(false);
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("UserId")
+                        .HasColumnName("UserID");
+
+                    b.HasKey("CartId");
+
+                    b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("JeSuisCatho.Web.API.Core.Models.Shop.CartItem", b =>
+                {
+                    b.Property<int>("CartItemId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CartId")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .IsUnicode(false);
+
+                    b.Property<int>("ProductId");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("CartItemId")
+                        .HasName("PK__CartItem__488B0B0AA0297D1C");
+
+                    b.ToTable("CartItems");
+                });
+
             modelBuilder.Entity("JeSuisCatho.Web.API.Core.Models.Shop.CategoryItem", b =>
                 {
                     b.Property<int>("Id")

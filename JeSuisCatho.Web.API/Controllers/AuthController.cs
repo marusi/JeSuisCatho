@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using JeSuisCatho.Web.API.Core.Services;
- using JeSuisCatho.Shared;
+using JeSuisCatho.Web.API.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

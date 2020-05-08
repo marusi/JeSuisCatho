@@ -35,10 +35,16 @@ import { InquireComponent } from './application/inquire.component';
 import { VisitsComponent } from './application/visits.component';
 import { SignupComponent } from './account/signup.component';
 import { SigninComponent } from './account/signin.component';
-
+import { ProductsComponent } from './products-list/products.component';
+import { ProductFormComponent } from './product-form/product-form.component';
+import { ViewProductComponent } from './view-product/view-product';
 import { PaginationComponent } from './shared/pagination.component';
 import { LoaderComponent } from './shared/loader/loader.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { AddtocartComponent } from './addtocart/addtocart.component';
+import { ShoppingCartComponent } from './shopping-cart/shoppingcart.component';
+import { ButtonCart } from './shopping-cart/button-cart/button-cart.component';
 
 
 
@@ -48,8 +54,12 @@ import { LoaderService } from './services/loader.service';
 import { ChurchService } from './services/church.service';
 import { AuthService } from './services/auth.service';
 import { ArticleService } from './services/article.service';
-
+import { CartService } from './services/cart.service';
+import { ProductService } from './services/product.service';
 import { ProfileService } from './services/profile.service';
+import { FileService } from './services/file.service';
+import { SnackbarService } from './services/snackbar.service';
+import { SubscriptionService } from './services/subscription.service';
 
 
 
@@ -63,16 +73,18 @@ registerLocaleData(en);
 //Raven.config('...').install();
 
 import { BBSRevampMaterialModule } from '../material.module';
+import { ErrorInterceptorService } from './interceptor/error-interceptor.service';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent, PaginationComponent,
-    HeaderComponent, HomeComponent, AboutComponent, ErrorComponent,
+    AppComponent, PaginationComponent, ProductsComponent, ProductFormComponent,
+    HeaderComponent, FooterComponent, HomeComponent, AboutComponent, ErrorComponent,
     SignupComponent, SigninComponent, ChurchFormComponent, LoaderComponent,
-    InfoDeskFormComponent, NewsComponent, ArticleListComponent,
-    CarouselComponent, ApplicationsComponent, InquireComponent, VisitsComponent
+    InfoDeskFormComponent, NewsComponent, ArticleListComponent, ViewProductComponent,
+    CarouselComponent, ApplicationsComponent, InquireComponent, VisitsComponent, AddtocartComponent,
+    ShoppingCartComponent, ButtonCart
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -89,6 +101,10 @@ import { BBSRevampMaterialModule } from '../material.module';
       { path: 'newsandevents/:id', component: InfoDeskFormComponent },
       { path: 'church/new', component: ChurchFormComponent },
       { path: 'visarequirements', component: ApplicationsComponent },
+      { path: 'product/new', component: ProductFormComponent },
+      { path: 'product/:id', component: ViewProductComponent  },
+      { path: 'products', component: ProductsComponent },
+      { path: 'shopping-cart', component: ShoppingCartComponent },
       // { path: 'library/:id', component: LibAssetFormComponent },
 
 
@@ -100,10 +116,11 @@ import { BBSRevampMaterialModule } from '../material.module';
       { path: '**', redirectTo: 'home' }
     ])
   ],
-  providers: [ { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService,
-    multi: true
-  }, LoaderService, ChurchService,
-    AuthService, ArticleService, ProfileService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
+    LoaderService, ChurchService, CartService, ProductService, SnackbarService,
+    AuthService, ArticleService, ProfileService, FileService, SubscriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

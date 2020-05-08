@@ -1,0 +1,402 @@
+
+
+<app-header></app-header>
+<div class="container ">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><h3>Add New Product</h3></th>
+          <th></th>
+          <th class="text-right">
+            Season just gets better
+
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container ">
+  <div class="col-sm-8  ">
+
+  </div>
+
+  <div class="col-sm-16  ">
+    <form #f="ngForm" (ngSubmit)="submitProduct()" novalidate id="add-guardian-form" action="">
+
+      <ol class="list-items">
+        <li class="list-items-row">
+          <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-1">
+            <div class="container">
+              <div class="row ">
+                <div class="col-md-24 type-h3">
+
+                  <i class="glyph glyph-expand"></i>
+                  Categories
+                  <span class="typ-p6 color-type-secondary">Fruits, Vegetables </span>
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+
+                </div>
+
+
+              </div>
+              <div class="col-md-12 ">
+
+              </div>
+            </div>
+          </div>
+          <div class="collapse" id="list-item-line-1">
+            <div class="row">
+              <div class="col-md-18 col-md-offset-2 color-type-secondary">
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="categoryItem">Select Category:</label>
+                    <select name="categoryItemId" [(ngModel)]="product.categoryItemId" (change)="onCategoryItemChange()" class="form-control">
+                      <option value="">Category is blank :(-</option>
+                      <option *ngFor="let c of categoryItems " value="{{ c.id }}"> {{ c.name}} </option>
+
+                    </select>
+
+                  </div>
+
+
+
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <label for="subCategoryItem">Type :</label>
+                    <select name="subCategoryItemId" [(ngModel)]="product.subCategoryItemId" class="form-control">
+                      <option value="">Category is blank :(-</option>
+                      <option *ngFor="let c of subCategoryItems" value="{{ c.id }}"> {{ c.name}} </option>
+
+                    </select>
+
+
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+              <div class="col-md-4 ">
+
+              </div>
+            </div>
+          </div>
+
+        </li>
+        <li class="list-items-row">
+          <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-2">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-24 type-h3">
+                  <i class="glyph glyph-people "></i>
+                  Suppliers
+                  <span class="typ-p6 color-type-secondary">Grocers, Wholesalers, Retailers </span>
+
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="collapse" id="list-item-line-2">
+            <div class="row">
+              <ol class="list-items">
+                <li class="list-items-row">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-24">
+                        <p>Listed Suppliers</p>
+                        <div class="form-group">
+
+
+                          <div class="checkbox" *ngFor="let s of suppliers">
+                            <label for="supplier{{ s.id }}">
+                              <input type="checkbox" id="supplier{{ s.id }}" (change)="onSupplierToggle(s.id, $event)" [checked]="product.suppliers.includes(s.id)">
+                              <span>{{ s.firstName}} {{ s.lastName }}</span>
+                            </label>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </li>
+        <li class="list-items-row">
+          <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-3">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-24 type-h3">
+
+
+                  <i class="glyph glyph-switch "></i>
+                  Availability
+                  <span class="typ-p6 color-type-secondary">Product, Discount</span>
+
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+          <div class="collapse" id="list-item-line-3">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Is Product Available?</p>
+                    <br />
+                    <label class="radio-inline">
+                      <input type="radio" name="isProductAvailable" [(ngModel)]="product.isProductAvailable" id="productAvailable" value="true">
+                      <span>Yes</span>
+                    </label>
+
+
+
+                    <label class="radio-inline" for="ProductNotAvailable">
+                      <input type="radio" name="isProductAvailable" id="productNotAvailable" [(ngModel)]="product.isProductAvailable" value="false">
+                      <span>No</span>
+                    </label>
+
+
+
+
+
+
+
+
+
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p>Is Discount Available?</p>
+                    <br />
+                    <label class="radio-inline">
+                      <input type="radio" name="isDiscountAvailable" [(ngModel)]="product.isDiscountAvailable" id="DiscountAvailable" value="true">
+                      <span>Yes</span>
+                    </label>
+
+
+
+                    <label class="radio-inline" for="DiscountNotAvailable">
+                      <input type="radio" name="isDiscountAvailable" id="discountNotAvailable" [(ngModel)]="product.isDiscountAvailable" value="false">
+                      <span>No</span>
+                    </label>
+
+
+
+
+
+
+
+
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-items-row">
+          <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-24 type-h3">
+
+
+                  <i class="glyph glyph-tag "></i>
+                  Pricing
+                  <span class="typ-p6 color-type-secondary">Amount, Quantity</span>
+
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="collapse" id="list-item-line-4">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="putbox">
+                    <div class="putbox-icon">
+                      <span class="glyph glyph-accounts"></span>
+                    </div>
+                    <div class="putbox-content">
+                      <div class="content-title">Pricing:</div>
+
+                      <input name="unitPrice" id="unitPrice" [(ngModel)]="product.sell.unitPrice" type="text" class="form-control" placeholder="Unit Price" />
+
+                      <input name="discount" id="discount" [(ngModel)]="product.sell.discount" type="text" class="form-control" placeholder="Unit Discount" />
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="putbox">
+
+                    <div class="putbox-content">
+                      <div class="content-title">Quantity:</div>
+
+                      <input name="unitWeight" id="unitWeight" [(ngModel)]="product.sell.unitWeight" type="text" class="form-control" placeholder="Unit Weight" />
+
+                      <input name="unitInStock" id="unitInStock" [(ngModel)]="product.sell.unitInStock" type="text" class="form-control" placeholder="Unit In Stock" />
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="putbox">
+
+                    <div class="putbox-content">
+                      <div class="content-title">Quantity Per Unit:</div>
+
+                      <input name="quantityPerUnit" id="quantityPerUnit" [(ngModel)]="product.sell.quantityPerUnit" type="text" class="form-control" placeholder="Quantity Per Unit" />
+
+                      <input name="unitOnOrder" id="unitOnOrder" [(ngModel)]="product.sell.unitOnOrder" type="text" class="form-control" placeholder="Unit On Order" />
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="list-items-row">
+          <div data-toggle="collapse" aria-expanded="false" data-target="#list-item-line-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-24 type-h3">
+
+
+                  <i class="glyph glyph-comment "></i>
+                  Description
+                  <span class="typ-p6 color-type-secondary">Info, Product Details</span>
+
+                  <i class="glyph glyph-chevron-right"></i>
+                  <i class="glyph glyph-chevron-down"></i>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="collapse" id="list-item-line-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="putbox">
+                    <div class="putbox-icon">
+                      <span class="glyph glyph-edit"></span>
+                    </div>
+                    <div class="putbox-content">
+                      <div class="content-title">Product Name:</div>
+
+                      <input name="productName" id="productName" [(ngModel)]="product.info.productName" type="text" class="form-control" placeholder="Product Name" />
+
+                      <input name="productDescription" id="productDescription" [(ngModel)]="product.info.productDescription" type="text" class="form-control" placeholder="Product Description" />
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-12">
+                  <div class="putbox">
+
+                    <div class="putbox-content">
+                      <div class="content-title">Identification:</div>
+
+                      <input name="vendorProductId" id="vendorProductId" [(ngModel)]="product.info.vendorProductId" type="text" class="form-control" placeholder="Vendor Product Id" />
+
+                      <textarea name="note" id="note" [(ngModel)]="product.info.note" type="text" class="form-control" placeholder="note"></textarea>
+
+
+
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-items-row">
+          <div class="row">
+            <div class="col-md-24">
+
+              <div class="btn-group navbar-right">
+
+                <button style="width:250px;" class="btn btn-block btn-secondary theme-light" href="#">Submit</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+
+
+    </form>
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+

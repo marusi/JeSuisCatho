@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article.service';
-import { Router, ActivatedRoute } from '@angular/router';
+// import { Router, ActivatedRoute } from '@angular/router';
 // import 'rxjs/observable/ForkJoinObservable';
 import { ToastrService } from 'ngx-toastr';
 import { KeyValuePair, Article } from '../models/article';
