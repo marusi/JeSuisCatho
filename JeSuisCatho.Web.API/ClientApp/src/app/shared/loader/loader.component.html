@@ -1,8 +1,29 @@
 
+
+
+
   <div *ngIf="isLoading | async" class="overlay">
+
+    <nav class="navbar navbar-default alert-stack">
+      <div class="navbar-global theme-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <i class="glyph glyph-hamburger"></i>
+            </button>
+
+            <a class="navbar-brand" [routerLink]='["/"]'>JeSuisCatho</a>
+          </div>
+     
+        </div>
+      </div>
+
+    </nav>
+
     <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
     </mat-progress-spinner>
-    
+
   </div>
 
 

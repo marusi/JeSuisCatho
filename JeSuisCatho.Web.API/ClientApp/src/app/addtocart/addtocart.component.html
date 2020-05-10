@@ -1,7 +1,12 @@
 
 
-<button (click)="addToCart()" type="button" autocomplete="off" style="color: #fff;  background: #61b405;"
-        class="btn btn-block btn-primary "
-        data-toggle="button" aria-pressed="false">
+<button (click)="addToCart()" type="button" autocomplete="off" 
+        class="btn btn-primary theme-light" style="color:#FFFFFF; background: #3f51b5"
+        data-toggle="button" aria-pressed="false"  matRipple
+     [matRippleCentered]="centered"
+     [matRippleDisabled]="disabled"
+     [matRippleUnbounded]="unbounded"
+     [matRippleRadius]="radius"
+     [matRippleColor]="secondary">
   Add to cart
 </button>

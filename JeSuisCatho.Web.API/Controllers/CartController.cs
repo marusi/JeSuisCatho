@@ -25,7 +25,8 @@ using JeSuisCatho.Web.API.Controllers.Resources.Shop;
 namespace JeSuisCatho.Web.API.Controllers
 {
 
-    [Route("api/[controller]")]
+    [Route("api/cart/")]
+
     public class CartController : Controller
     {
         readonly ICartService _cartService;

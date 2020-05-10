@@ -38,6 +38,7 @@ export interface Product {
   productAvailable: boolean;
   discountAvailable: boolean;
   productOfSeason: boolean;
+  sellUnitPrice: number;
   suppliers: Supplier;
   info: Info;
   sell: Sell;

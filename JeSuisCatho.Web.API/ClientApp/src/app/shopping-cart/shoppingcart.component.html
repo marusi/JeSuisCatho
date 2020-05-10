@@ -1,19 +1,171 @@
 <app-header></app-header>
 <div class="container">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>
-          <P>CART</P>
-          <h3>You selected {{profile.cartCount }} items</h3>
-        </th>
-        <th></th>
-        <th class="text-right">
-          <a [routerLink]='["/"]'><p>Keep Shopping</p> </a> 
+ 
 
-        </th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+
+  <ng-template #emptycart>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <P>CART</P>
+            <h3>Your shopping basket is currently empty</h3>
+          </th>
+          <th></th>
+          <th class="text-right">
+            <button [routerLink]='["/"]' type="button" autocomplete="off" style="color:#3f51b5; " class="btn btn-default " data-toggle="button" aria-pressed="false">Keep Shopping <i class="glyph glyph-shop"></i></button>
+           
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </ng-template>
+
+  <div *ngIf="cartItems && cartItems.length>0; else emptycart">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+
+            <h3>Cart</h3>
+           
+          </th>
+          <th></th>
+          <th class="text-right">
+          
+
+          </th>
+          <th class="text-right">
+            <button [routerLink]='["/"]' type="button" autocomplete="off" style="color:#3f51b5; " class="btn btn-default " data-toggle="button" aria-pressed="false">Keep Shopping <i class="glyph glyph-shop"></i></button>
+            <button (click)="clearCart()" type="button" autocomplete="off" style="color:#d02e00; " class="btn btn-default " data-toggle="button" aria-pressed="false">Clear Cart <i class="glyph glyph-clear"></i></button>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+   
+     
+        <div class="row section-gallery">
+          <div class="col-md-14">
+
+            <ol class="list-items">
+              
+
+              <li class="row" *ngFor="let item of cartItems">
+                
+                  <div class="entity-list ">
+                    <div class="entity-list-item " >
+                      <div class="item-icon">
+                        <span class=""></span>
+                      </div>
+                      <div class="item-content-secondary">
+                        <div class="content-text-primary "> {{ item.product.sellUnitPrice | currency : 'KES' }} </div>
+                        <button [disabled]="item.quantity < 2 ? true : false"
+                                mat-icon-button color="warn" (click)="deleteOneCartItem(item.product.id )">
+                          <i class="glyph glyph-remove"></i>
+                        </button>
+                        {{item.quantity}}
+                        <button mat-icon-button color="warn"
+                                (click)="addToCart(item.product.id)">
+                          <i class="glyph glyph-add"></i>
+                        </button>
+                      </div>
+
+                      <div class="item-content-primary">
+
+                        <div class="content-text-primary "> {{ item.product.infoProductName }}</div>
+                        <div class="content-text-secondary">{{ item.product.infoProductDescription}} </div>
+                     
+                       
+
+                      </div>
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+
+                              <p>Total: {{ item.product.sellUnitPrice  * item.quantity | currency : 'KES'}}</p>
+
+                            </th>
+                            <th></th>
+                            <th class="text-right">
+
+
+                            </th>
+                            <th class="text-right">
+                           
+                              <button  (click)="deleteCartItem(item.product.id)" type="button" autocomplete="off" style="color:#ff0000; " class="btn btn-default " data-toggle="button" aria-pressed="false"><small>Remove <i class="glyph glyph-delete"></i> </small></button>
+
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody></tbody>
+                      </table>
+            
+
+
+                    </div>
+                  </div>
+
+               
+              </li>
+            </ol>
+
+
+
+
+          </div>
+          <div class="col-md-2 "></div>
+            <div class="col-md-8 ">
+              <div class="orderSummary">
+                <h6><b>Order Summary</b></h6>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+                        <h4> {{profile.cartCount}} {{cartCountWord }}</h4>
+
+                      </th>
+                      <th></th>
+                      <th class="text-right">
+                        <h5 class="media-price">  {{totalPrice | currency : 'KES' }}</h5>
+
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><b>Total Cost:</b></td>
+                      <th></th>
+                      <td class="text-right"> {{totalPrice | currency : 'KES' }}</td>
+                    </tr>
+                 
+                  </tbody>
+                </table>
+                
+                        <button [routerLink]='["/checkout"]' type="button" autocomplete="off"
+                                class="btn btn-block  btn-primary theme-light" style="color:#FFFFFF; background: #3f51b5"
+                                data-toggle="button" aria-pressed="false" matRipple
+                                [matRippleCentered]="centered"
+                                [matRippleDisabled]="disabled"
+                                [matRippleUnbounded]="unbounded"
+                                [matRippleRadius]="radius"
+                                [matRippleColor]="secondary">
+                          Proceed to Checkout
+                        </button>
+
+
+              </div>
+            </div>
+          </div>
+    
+
+  
+
+  </div>
 </div>
+
+

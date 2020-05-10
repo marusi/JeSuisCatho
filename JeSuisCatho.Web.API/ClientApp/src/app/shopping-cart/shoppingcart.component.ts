@@ -14,8 +14,22 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   public cartItems: ShoppingCart[];
-  profile: Profile;
+  profile: Profile = {
+    id: '',
+    email: '',
+    cartCount: 0,
+    name: '',
+    isLoggedIn: true
+  };
+
+  
   userId;
+  // BUG FIX to enable storage of userID from profile ID
+  uniqueID;
+
+  wordItem = 'item';  
+  cartCountWord;
+
   totalPrice: number;
   private unsubscribe$ = new Subject<void>();
 
@@ -23,26 +37,44 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private snackBarService: SnackbarService,
     private userService: ProfileService) {
+      // BUG FIX to enable storage of userID from profile ID
     this.userService.getProfile().subscribe(profile => {
-
       this.profile = profile;
-      // console.log(`PROF: ${this.profile.id}`);
-      this.userId = this.profile.id;
+      this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
+     
+     for (const [key, value] of Object.entries(profile)) {
+
+        if (key === "id") {
+          this.uniqueID = value;
+          localStorage.setItem('id', this.uniqueID);
+
+        }
+      } 
+
     }, error => console.log(error));
+    this.userId = localStorage.getItem('id');
+
   }
 
   ngOnInit() {
+
+
     this.cartItems = [];
-    this.cartService.getOldCart();
+   
+   this.cartService.getOldCart();
     this.getShoppingCartItems();
   }
 
   getShoppingCartItems() {
+  
+
     this.cartService.getCartItems(this.userId)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(
         (result: ShoppingCart[]) => {
           this.cartItems = result;
+          console.log(this.cartItems);
+          
           this.getTotalPrice();
         }, error => {
           console.log('Error ocurred while fetching shopping cart item : ', error);
@@ -52,10 +84,17 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   getTotalPrice() {
     this.totalPrice = 0;
     this.cartItems.forEach(item => {
-   
-      this.totalPrice += (item.product.sell.unitPrice * item.quantity);
+      // ERROR reported coz model is not correct.... logic works though
+      this.totalPrice += (item.product.sellUnitPrice * item.quantity);
+      
     });
   }
+
+ 
+
+  pluralize = (count, noun, suffix = 's') => `${noun}${count !== 1 ? suffix : ''}` ;
+
+
 
   deleteCartItem(productId: number) {
     this.cartService.removeCartItems(this.userId, productId)
@@ -65,6 +104,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           this.userService.cartItemcount$.next(result);
           this.snackBarService.showSnackBar('Product removed from cart');
           this.getShoppingCartItems();
+          this.userService.getProfile().subscribe(profile => {
+            this.profile = profile;
+            this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
+
+            
+
+          }, error => console.log(error));
         }, error => {
           console.log('Error ocurred while deleting cart item : ', error);
         });
@@ -78,6 +124,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           this.userService.cartItemcount$.next(result);
           this.snackBarService.showSnackBar('One item added to cart');
           this.getShoppingCartItems();
+          this.profile.cartCount += 1;
+          this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
         }, error => {
           console.log('Error ocurred while addToCart data : ', error);
         });
@@ -91,8 +139,10 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           this.userService.cartItemcount$.next(result);
           this.snackBarService.showSnackBar('One item removed from cart');
           this.getShoppingCartItems();
+          this.profile.cartCount -= 1;
+          this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
         }, error => {
-          console.log('Error ocurred while fetching book data : ', error);
+          console.log('Error ocurred while fetching product data : ', error);
         });
   }
 
@@ -104,6 +154,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
           this.userService.cartItemcount$.next(result);
           this.snackBarService.showSnackBar('Cart cleared!!!');
           this.getShoppingCartItems();
+          this.userService.cartItemcount$.next(result);
+          this.profile.cartCount = 0;
         }, error => {
           console.log('Error ocurred while deleting cart item : ', error);
         });

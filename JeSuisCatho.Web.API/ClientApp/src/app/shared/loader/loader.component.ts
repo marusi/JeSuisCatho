@@ -13,7 +13,7 @@ import { LoaderService } from '../../services/loader.service';
 })
 export class LoaderComponent {
 
-  color = 'secondary';
+  color = 'primary';
   mode = 'indeterminate';
   value = 50;
   isLoading: Subject<boolean> = this.loaderService.isLoading;

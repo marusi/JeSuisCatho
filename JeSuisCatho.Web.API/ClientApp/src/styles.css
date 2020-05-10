@@ -9,6 +9,30 @@
 @import "../node_modules/ngx-toastr/toastr.css";
 
 
+.snackbarwrap {
+  padding: 20px 0px;
+  border-radius: 0px;
+  min-width: 20%;
+  transform-origin: center center;
+  transform: translate(-50%, 0%);
+  background: #D02E00;
+  text-align: center;
+  font-size: 1.3em;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  color: white;
+  margin: 0;
+}
+
+.danger {
+  background: rgb(173, 35, 0);
+}
+
+.snackbartext {
+  text-align: center;
+  font-size: 1.3em;
+  color: white;
+  margin: 0;
+}
 
 .color-white {
   background: #FFFFFF;
