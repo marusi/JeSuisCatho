@@ -4,7 +4,7 @@ import { SubscriptionService } from '../services/subscription.service'
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../services/profile.service';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../services/snackbar.service';
 import { Profile } from '../models/profile';
 
 
@@ -27,7 +27,7 @@ export class SigninComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService,
+    private snackBarService: SnackbarService,
     private profService: ProfileService,
     private subscriptionService: SubscriptionService,
     private authService: AuthService) {
@@ -49,7 +49,7 @@ export class SigninComponent {
         }
       }
     
-        this.toastrService.success('Welcome', 'Karibu, Bienvenue')
+      this.snackBarService.showSnackBar('Welcome Mate');
         this.router.navigate(['/']);
       });
  

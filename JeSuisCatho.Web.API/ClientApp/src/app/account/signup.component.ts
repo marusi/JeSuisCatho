@@ -1,8 +1,8 @@
 import { Component} from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormGroup, FormBuilder } from '@angular/forms';
+
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-signup',
@@ -25,7 +25,7 @@ export class SignupComponent  {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService,
+    private snackBarService: SnackbarService,
     private authService: AuthService) {
 
   }
@@ -37,7 +37,7 @@ export class SignupComponent  {
     submitRegister() { 
       this.authService.create(this.account)
       .subscribe(x => {
-        this.toastrService.success('Thank you', 'Account Registered Succesfuly');
+        this.snackBarService.showSnackBar('Account is successfuly registered');
       });
     }
   

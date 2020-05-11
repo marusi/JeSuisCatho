@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductService } from './../services/product.service';
 import { CartService } from './../services/cart.service';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../services/snackbar.service';
 
 
 import { SaveProduct } from '../models/product';
@@ -36,7 +35,7 @@ export class ProductFormComponent implements OnInit {
     private cartService: CartService,
     private route: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService
+    private snackBarService: SnackbarService
   ) {
     route.params.subscribe(p => {
       this.product.id = +p['id'] || 0;
@@ -89,7 +88,8 @@ export class ProductFormComponent implements OnInit {
   submitProduct() {
     this.productService.create(this.product)
       .subscribe(x => {
-        this.toastrService.success('Thank you', 'Article created Successfully');
+  
+        this.snackBarService.showSnackBar('Product created successfuly');
       });
   }
 

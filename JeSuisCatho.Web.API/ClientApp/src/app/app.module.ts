@@ -7,8 +7,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import 'hammerjs';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { ToastrModule } from 'ngx-toastr';
-// import { ToastyModule } from 'ng2-toasty';
+
 import { MatNativeDateModule } from '@angular/material';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -89,7 +88,7 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule, ToastrModule.forRoot(),
+    FormsModule, 
     BrowserAnimationsModule, MatNativeDateModule,
     CommonModule, FormsModule, BBSRevampMaterialModule,
 
