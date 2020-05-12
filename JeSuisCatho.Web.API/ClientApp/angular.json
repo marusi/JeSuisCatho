@@ -72,6 +72,7 @@
             "scripts": [],
             "styles": [
               "src/styles.css"
+            
             ],
             "assets": [
               "src/assets"

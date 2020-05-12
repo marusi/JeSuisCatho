@@ -39,6 +39,9 @@ namespace JeSuisCatho.Web.API.Persistence
         public DbSet<Cart> Cart { get; set; }
         public  DbSet<CartItem> CartItems { get; set; }
 
+        public  DbSet<CustomerOrderDetails> CustomerOrderDetails { get; set; }
+        public  DbSet<CustomerOrders> CustomerOrders { get; set; }
+
 
 
 
@@ -80,6 +83,36 @@ namespace JeSuisCatho.Web.API.Persistence
                     .HasMaxLength(36)
                     .IsUnicode(false);
             });
+
+            modelBuilder.Entity<CustomerOrderDetails>(entity =>
+            {
+                entity.HasKey(e => e.OrderDetailsId)
+                    .HasName("PK__Customer__9DD754DB9D819T221B");
+
+                entity.Property(e => e.OrderId)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Price).HasColumnType("decimal(10, 2)");
+            });
+
+            modelBuilder.Entity<CustomerOrders>(entity =>
+            {
+                entity.HasKey(e => e.OrderId)
+                    .HasName("PK__Customer__C3905BFCF96C8F1E7");
+
+                entity.Property(e => e.OrderId)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.CartTotal).HasColumnType("decimal(10, 2)");
+
+                entity.Property(e => e.DateCreated).HasColumnType("datetime");
+
+                entity.Property(e => e.UserId).HasColumnName("UserID");
+            });
+
 
 
         }

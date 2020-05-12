@@ -3,7 +3,7 @@ import { ProductService } from '../services/product.service';
 import { FileService } from '../services/file.service';
 // import { Router, ActivatedRoute } from '@angular/router';
 // import 'rxjs/observable/ForkJoinObservable';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../services/snackbar.service';
 import { KeyValuePair, Supplier, Product, Info, Sell } from '../models/product';
 
 @Component({
@@ -24,7 +24,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private fileService: FileService,
-    private toastrService: ToastrService)
+    private snackBarService: SnackbarService)
   {
    
    

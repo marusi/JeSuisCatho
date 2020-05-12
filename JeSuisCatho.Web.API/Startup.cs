@@ -57,6 +57,7 @@ namespace JeSuisCatho.Web.API
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IPhotoStorage, FileSystemPhotoStorage>();
             services.AddTransient<ICartService, CartDataAccessLayer>();
+            services.AddTransient<IOrderService, OrderDataAccessLayer>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger services

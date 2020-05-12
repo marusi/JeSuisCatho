@@ -107,25 +107,5 @@
 
 
 
-.social {
-  display: inline-block;
-  line-height: 2.4em;
-  margin-left: 1em;
-  float: right;
-}
-
-  .social a {
-    display: inline-block;
-    color: #1a1a1a;
-    margin: 0 0.5em;
-    text-decoration: none;
-  }
-
-    .social a:hover,
-    .social a:focus,
-    .social a.current {
-      color: #fff;
-    }
-
 
 

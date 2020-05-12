@@ -1,7 +1,7 @@
 // import * as Raven from 'raven-js';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { CommonModule, registerLocaleData } from '@angular/common';
@@ -44,7 +44,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AddtocartComponent } from './addtocart/addtocart.component';
 import { ShoppingCartComponent } from './shopping-cart/shoppingcart.component';
 import { ButtonCart } from './shopping-cart/button-cart/button-cart.component';
-
+import { ProductOrdersComponent } from './user-orders/user-orders.component';
+import { CheckOutComponent } from './checkout/checkout.component';
 
 
 //services
@@ -59,6 +60,8 @@ import { ProfileService } from './services/profile.service';
 import { FileService } from './services/file.service';
 import { SnackbarService } from './services/snackbar.service';
 import { SubscriptionService } from './services/subscription.service';
+import { ProductOrdersService } from './services/product.order.service';
+import { CheckOutService } from './services/checkout.service';
 
 
 
@@ -83,12 +86,12 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
     SignupComponent, SigninComponent, ChurchFormComponent, LoaderComponent,
     InfoDeskFormComponent, NewsComponent, ArticleListComponent, ViewProductComponent,
     CarouselComponent, ApplicationsComponent, InquireComponent, VisitsComponent, AddtocartComponent,
-    ShoppingCartComponent, ButtonCart
+    ShoppingCartComponent, ButtonCart, ProductOrdersComponent, CheckOutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule, 
+    FormsModule, ReactiveFormsModule,
     BrowserAnimationsModule, MatNativeDateModule,
     CommonModule, FormsModule, BBSRevampMaterialModule,
 
@@ -104,6 +107,8 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
       { path: 'product/:id', component: ViewProductComponent  },
       { path: 'products', component: ProductsComponent },
       { path: 'shopping-cart', component: ShoppingCartComponent },
+      { path: 'myorders', component: ProductOrdersComponent},
+      { path: 'checkout', component: CheckOutComponent},
       // { path: 'library/:id', component: LibAssetFormComponent },
 
 
@@ -119,7 +124,8 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
     LoaderService, ChurchService, CartService, ProductService, SnackbarService,
-    AuthService, ArticleService, ProfileService, FileService, SubscriptionService],
+    AuthService, ArticleService, ProfileService, FileService, SubscriptionService,
+    ProductOrdersService, CheckOutService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

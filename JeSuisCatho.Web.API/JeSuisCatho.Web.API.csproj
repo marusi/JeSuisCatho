@@ -52,6 +52,7 @@
     <None Remove="ClientApp\src\app\footer\footer.component.ts" />
     <None Remove="ClientApp\src\app\models\product.ts" />
     <None Remove="ClientApp\src\app\services\loader.service.ts" />
+    <None Remove="ClientApp\src\app\services\product.order.service.ts" />
     <None Remove="ClientApp\src\app\services\profile.service.ts" />
     <None Remove="ClientApp\src\app\shared\loader\loader.component.ts" />
     <None Remove="ClientApp\src\app\shopping-cart\button-cart\button-cart.component.ts" />
@@ -62,14 +63,17 @@
     <TypeScriptCompile Remove="ClientApp\src\app\addtocart\addtocart.component.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\interceptor\error-interceptor.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\models\article.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\models\order.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\models\shoppingcart.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\article.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\cart.service.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\services\checkout.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\file.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\inquiry.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\product.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\services\snackbar.service.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\shopping-cart\shoppingcart.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\user-orders\user-orders.component.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\view-product\view-product.ts" />
   </ItemGroup>
 
@@ -80,6 +84,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\JeSuisCatho.Shared\JeSuisCatho.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\checkout\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

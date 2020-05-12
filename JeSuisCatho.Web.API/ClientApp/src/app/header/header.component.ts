@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { ProfileService } from '../services/profile.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 import { Profile } from '../models/profile';
 
 
@@ -25,7 +25,6 @@ export class HeaderComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService,
    private auth: AuthService,
    private prof: ProfileService,
  ) {  }
@@ -45,7 +44,7 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.auth.logout()
-    this.toastrService.info('Bye Bye', 'Successfuly Logged out')
+   // this.toastrService.info('Bye Bye', 'Successfuly Logged out')
     this.router.navigate(['/signin']);
    // this.profile = {};
   }

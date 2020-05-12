@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../services/article.service';
 // import { Router, ActivatedRoute } from '@angular/router';
 // import 'rxjs/observable/ForkJoinObservable';
-import { ToastrService } from 'ngx-toastr';
+import { SnackbarService } from '../services/snackbar.service';
 import { KeyValuePair, Article } from '../models/article';
 
 @Component({
@@ -22,7 +22,7 @@ export class ArticleListComponent implements OnInit {
 
 
 
-  constructor(private articleService: ArticleService, private toastrService: ToastrService) { }
+  constructor(private articleService: ArticleService, private snackBarService: SnackbarService) { }
 
   ngOnInit() {
 

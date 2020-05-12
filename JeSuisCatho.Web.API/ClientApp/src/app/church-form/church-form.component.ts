@@ -5,8 +5,8 @@ import {ChurchService} from '../services/church.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, forkJoin } from 'rxjs';
  import { SaveChurch, Church } from '../models/church';
- // import 'rxjs/observable/ForkJoinObservable';
-import { ToastrService } from 'ngx-toastr';
+// import 'rxjs/observable/ForkJoinObservable';
+import { SnackbarService } from '../services/snackbar.service';
 
 
 
@@ -50,8 +50,7 @@ export class ChurchFormComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private churchService: ChurchService,
- 
-    private toastrService: ToastrService,
+    private snackBarService: SnackbarService,
   ) {
 
  
@@ -93,13 +92,13 @@ export class ChurchFormComponent implements OnInit {
 
     this.dioceses = selectedArchDiocese.dioceses;
 
-    console.log(`SELECTED: ${this.dioceses}`);
+  //  console.log(`SELECTED: ${this.dioceses}`);
   }
 
   onDioceseChange() {
     let selectedDiocese = this.dioceses.find(d => d.id == this.church.dioceseId);
     this.deaneries = selectedDiocese.deaneries;
-    console.log(`XDEANERIES: ${this.deaneries}`);
+  //  console.log(`XDEANERIES: ${this.deaneries}`);
   }
 
   }

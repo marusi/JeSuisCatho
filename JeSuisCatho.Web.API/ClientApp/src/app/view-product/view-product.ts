@@ -1,4 +1,4 @@
-import { ToastrService } from 'ngx-toastr';
+
 import { ProductService } from '../services/product.service';
 import { Component, OnInit, ElementRef, ViewChild, NgZone} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +25,7 @@ export class ViewProductComponent implements OnInit {
     private router: Router,
    
     private route: ActivatedRoute, 
-    private toastrService: ToastrService,
+ 
     private productService: ProductService,
     private cartService: CartService,
     private fileService: FileService) { 

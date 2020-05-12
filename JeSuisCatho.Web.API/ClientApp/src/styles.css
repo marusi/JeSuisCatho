@@ -6,7 +6,7 @@
  */
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import "../node_modules/ngx-toastr/toastr.css";
+
 
 
 .snackbarwrap {
@@ -18025,11 +18025,3 @@ code .number {
 }
 
 
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}

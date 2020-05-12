@@ -3,7 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { ProfileService } from '../../services/profile.service';
 import { SubscriptionService } from '../../services/subscription.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 import { Profile } from '../../models/profile';
 
 
@@ -25,7 +25,6 @@ export class ButtonCart {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private toastrService: ToastrService,
     private auth: AuthService,
     private prof: ProfileService,
     private subscriptionService: SubscriptionService

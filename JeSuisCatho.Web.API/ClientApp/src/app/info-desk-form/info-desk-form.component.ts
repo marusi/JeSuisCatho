@@ -1,11 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ArticleService } from './../services/article.service';
 
 
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 
-import { ToastrService } from 'ngx-toastr';
+
+import { SnackbarService } from '../services/snackbar.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -49,7 +48,7 @@ export class InfoDeskFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private articleService: ArticleService,
-    private toastrService: ToastrService
+    private snackBarService: SnackbarService
   ) {
    
     route.params.subscribe(p => {
@@ -72,7 +71,7 @@ export class InfoDeskFormComponent implements OnInit {
         this.article = a;
       }, err => {
           if (err.status == 404)
-            this.toastrService.error('Thank who', 'This Developer Sucks');
+            this.snackBarService.showSnackBar('Unable to create and article');
            // this.router.navigate(['/not-found-error'])
       });
 
@@ -108,7 +107,7 @@ export class InfoDeskFormComponent implements OnInit {
     if ($event.target.checked)
       this.article.counties.push(countyId);
     else {
-      var index = this.article.counties.indexOf(countyId);
+      let index = this.article.counties.indexOf(countyId);
       this.article.counties.splice(index, 1);
     }
 
@@ -117,7 +116,8 @@ export class InfoDeskFormComponent implements OnInit {
   submitArticle() {
     this.articleService.create(this.article)
       .subscribe(x => {
-        this.toastrService.success('Thank you', 'Article created Successfully');
+        this.snackBarService.showSnackBar('Article created succesfully');
+        
       });
   }
  

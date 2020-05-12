@@ -1,0 +1,177 @@
+<app-header></app-header>
+<div class="container">
+
+  <h3>Check Out</h3>
+
+  <ng-template #emptycart>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            <P>CART</P>
+            <h3>Your shopping basket is currently empty</h3>
+          </th>
+          <th></th>
+          <th class="text-right">
+            <button [routerLink]='["/"]' type="button" autocomplete="off" style="color:#3f51b5; " class="btn btn-default " data-toggle="button" aria-pressed="false">Keep Shopping <i class="glyph glyph-shop"></i></button>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </ng-template>
+
+  <div *ngIf="checkOutItems && checkOutItems.orderDetails.length>0; else emptycart">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+
+            <h3>Order Summary</h3>
+
+          </th>
+          <th></th>
+          <th class="text-right">
+
+
+          </th>
+          <th class="text-right">
+            <button [routerLink]='["/"]' type="button" autocomplete="off" style="color:#3f51b5; " class="btn btn-default " data-toggle="button" aria-pressed="false">Keep Shopping <i class="glyph glyph-shop"></i></button>
+            <button (click)="clearCart()" type="button" autocomplete="off" style="color:#d02e00; " class="btn btn-default " data-toggle="button" aria-pressed="false">Clear Cart <i class="glyph glyph-clear"></i></button>
+
+          </th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="row section-gallery">
+      <div class="col-md-12">
+
+        <ol class="list-items">
+
+
+          <li class="row" *ngFor="let item of checkOutItems.orderDetails">
+
+            <div class="entity-list ">
+              <div [routerLink]="['/product/details/',item.product.id]"  class="entity-list-item ">
+                <div class="item-icon">
+                  <span class=""></span>
+                </div>
+                <div class="item-content-secondary">
+                  <div class="content-text-primary "> {{ item.product.sellUnitPrice | currency : 'KES' }} </div>
+                 
+                 Quantity: {{item.quantity}}
+                 
+                </div>
+
+                <div class="item-content-primary">
+
+                  <div class="content-text-primary "> {{ item.product.infoProductName }}</div>
+                  <div class="content-text-secondary">{{ item.product.infoProductDescription}} </div>
+
+
+
+                </div>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>
+
+                        <p>Total: {{ item.product.sellUnitPrice  * item.quantity | currency : 'KES'}}</p>
+
+                      </th>
+                      <th></th>
+                      <th class="text-right">
+                     
+
+                      </th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                 
+                  </tbody>
+                </table>
+
+
+
+              </div>
+            </div>
+
+
+          </li>
+          <li>
+         
+          </li>
+        </ol>
+
+
+
+
+      </div>
+     
+      <div class="col-md-12">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><h3>Grand Total:</h3></th>
+              <th>  <h3> {{totalPrice| currency : 'KES' }}</h3></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <form [formGroup]="checkOutForm" (ngSubmit)="placeOrder()">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" formControlName="name" required>
+            <mat-error *ngIf="name.touched && name.invalid">Name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Address Line 1" formControlName="addressLine1" required>
+            <mat-error *ngIf="addressLine1.touched && addressLine1.invalid">
+              Address is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Address Line 2" formControlName="addressLine2" required>
+            <mat-error *ngIf="addressLine2.touched && addressLine2.invalid">
+              Address is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Pincode" formControlName="pincode" required>
+            <mat-error *ngIf="pincode.touched && pincode.hasError('required')">
+              Pincode is required
+            </mat-error>
+            <mat-error *ngIf="pincode.touched && pincode.hasError('pattern')">
+              Pincode must have 6 digits only and cannot start with 0
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="State" formControlName="state" required>
+            <mat-error *ngIf="state.touched && state.invalid">State is required</mat-error>
+          </mat-form-field>
+          <mat-card-actions align="right">
+            <div fxFlex></div>
+            <button type="submit" mat-raised-button color="primary">Place Order</button>
+            <button type="button" mat-raised-button color="warn"
+                    [routerLink]='["/shopping-cart"]'>
+              CANCEL
+            </button>
+          </mat-card-actions>
+
+        </form>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
