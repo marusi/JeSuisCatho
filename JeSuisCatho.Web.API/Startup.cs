@@ -17,7 +17,7 @@ using JeSuisCatho.Web.API.Persistence;
 using JeSuisCatho.Web.API.Core.Models;
 using JeSuisCatho.Web.API.Core.Services;
 using JeSuisCatho.Web.API.Controllers;
-// using JeSuisCatho.Shared;
+ using JeSuisCatho.Shared;
 
 using NSwag.AspNetCore;
 using NJsonSchema;
@@ -54,12 +54,14 @@ namespace JeSuisCatho.Web.API
             services.AddScoped<IArticleRepository, ArticleRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddTransient<IPhotoService, PhotoService>();
+     
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddTransient<IPhotoStorage, FileSystemPhotoStorage>();
             services.AddTransient<ICartService, CartDataAccessLayer>();
             services.AddTransient<IOrderService, OrderDataAccessLayer>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddHttpClient();
             // Register the Swagger services
             services.AddSwaggerDocument();
             services.AddAutoMapper();
