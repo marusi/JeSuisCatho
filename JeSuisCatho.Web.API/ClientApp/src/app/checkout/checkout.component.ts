@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Order } from '../models/order';
+import { Profile } from '../models/profile';
 import { ProfileService } from '../services/profile.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -20,16 +21,34 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   userId;
   totalPrice: number;
+  wordItem = 'item';
+  cartCountWord;
   checkOutItems = new Order();
   private unsubscribe$ = new Subject<void>();
+  profile: Profile = {
+    id: '',
+    email: '',
+    cartCount: 0,
+    name: '',
+    isLoggedIn: true
+  };
 
   constructor(
     private userService: ProfileService,
      private fb: FormBuilder,
     private router: Router,
     private cartService: CartService,
+   
     private checkOutService: CheckOutService,
     private snackBarService: SnackbarService) {
+
+    this.userService.getProfile().subscribe(profile => {
+      this.profile = profile;
+      this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
+
+    
+
+    }, error => console.log(error));
     this.userId = localStorage.getItem('id');
   }
 
@@ -98,7 +117,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
           });
     }
   }
-
+  pluralize = (count, noun, suffix = 's') => `${noun}${count !== 1 ? suffix : ''}`;
   ngOnDestroy() {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();

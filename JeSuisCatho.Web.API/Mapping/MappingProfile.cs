@@ -81,6 +81,13 @@ namespace JeSuisCatho.Web.API.Mapping
                      Duration = a.AmbacoDuration
                  }))
                  .ForMember(ar => ar.Locations, opt => opt.MapFrom(a => a.Locations.Select(al => new KeyValuePairResource { Id = al.Location.Id, Name = al.Location.Name })));
+
+            CreateMap<Post, SavePostResource>();
+            CreateMap<Post, PostResource>()
+                .ForMember(al => al.NewsEvent, opt => opt.MapFrom(a => a.NewsCategory.NewsEvent));
+
+
+
             CreateMap<Supplier, SupplierResource>();
             CreateMap<Product, SaveProductResource>()
                 .ForMember(pr => pr.Info, opt => opt.MapFrom(p => new InfoResource
@@ -187,6 +194,9 @@ namespace JeSuisCatho.Web.API.Mapping
                     foreach (var l in addedLocations)
                         a.Locations.Add(l);
                 });
+
+            CreateMap<SavePostResource, Post>()
+                .ForMember(a => a.Id, opt => opt.Ignore());
 
             CreateMap<SaveChurchResource, Church>()
                 .ForMember(c => c.Id, opt => opt.Ignore())

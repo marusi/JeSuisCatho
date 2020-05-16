@@ -16,5 +16,7 @@ namespace JeSuisCatho.Web.API.Core.Models.User
         public string LastName { get; set; }
 
         public string Email { get; set; }
+
+        public int UserTypeId { get; set; }
     }
 }

@@ -52,6 +52,7 @@
     <None Remove="ClientApp\src\app\footer\footer.component.ts" />
     <None Remove="ClientApp\src\app\models\product.ts" />
     <None Remove="ClientApp\src\app\services\loader.service.ts" />
+    <None Remove="ClientApp\src\app\services\mpesa.service.ts" />
     <None Remove="ClientApp\src\app\services\product.order.service.ts" />
     <None Remove="ClientApp\src\app\services\profile.service.ts" />
     <None Remove="ClientApp\src\app\shared\loader\loader.component.ts" />

@@ -42,6 +42,8 @@ namespace JeSuisCatho.Web.API.Persistence
         public  DbSet<CustomerOrderDetails> CustomerOrderDetails { get; set; }
         public  DbSet<CustomerOrders> CustomerOrders { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
 
 
 

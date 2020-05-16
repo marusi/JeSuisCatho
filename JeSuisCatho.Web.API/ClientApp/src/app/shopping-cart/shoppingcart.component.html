@@ -145,7 +145,7 @@
                   </tbody>
                 </table>
                 
-                        <button [routerLink]='["/checkout"]' type="button" autocomplete="off"
+                        <button (click)="authMpesa()" [routerLink]='["/checkout"]' type="button" autocomplete="off"
                                 class="btn btn-block  btn-primary theme-light" style="color:#FFFFFF; background: #3f51b5"
                                 data-toggle="button" aria-pressed="false" matRipple
                                 [matRippleCentered]="centered"

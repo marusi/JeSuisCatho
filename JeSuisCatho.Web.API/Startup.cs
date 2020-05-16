@@ -22,12 +22,14 @@ using JeSuisCatho.Web.API.Controllers;
 using NSwag.AspNetCore;
 using NJsonSchema;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using JeSuisCatho.Web.API.Core.Models.Shop;
 using Microsoft.AspNetCore.Http;
 using JeSuisCatho.Web.API.Persistence.DataAccess;
+using JeSuisCatho.Web.API.Core.Models.User;
 
 namespace JeSuisCatho.Web.API
 {
@@ -52,6 +54,8 @@ namespace JeSuisCatho.Web.API
             services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             services.AddScoped<IChurchRepository, ChurchRepository>();
             services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IArticleRepository, ArticleRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IPhotoRepository, PhotoRepository>();
             services.AddTransient<IPhotoService, PhotoService>();
      
@@ -95,10 +99,12 @@ namespace JeSuisCatho.Web.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes($"{Configuration["AuthSettings:Key"]}")),
                     ValidateIssuerSigningKey = true
                 };
+                services.AddCors();
             });
-            services.AddAuthorization(option =>
+            services.AddAuthorization(config =>
             {
-               // option.AddPolicy
+              config.AddPolicy(UserRoles.Admin, Policies.AdminPolicy());
+              config.AddPolicy(UserRoles.User, Policies.UserPolicy());
             });
 
             services.AddScoped<IUserService, UserRepository>();

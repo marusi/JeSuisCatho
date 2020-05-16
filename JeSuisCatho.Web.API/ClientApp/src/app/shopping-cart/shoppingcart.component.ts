@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ShoppingCart } from '../models/shoppingcart';
+import { ShoppingCart, MpesaAuth } from '../models/shoppingcart';
 import { CartService } from '../services/cart.service';
 import { SnackbarService } from '../services/snackbar.service';
 import { ProfileService } from '../services/profile.service';
+import { MpesaService } from '../services/mpesa.service';
 import { Profile } from '../models/profile';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -22,6 +23,9 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     isLoggedIn: true
   };
 
+  mpesaAuth;
+  token = [];
+
   
   userId;
   // BUG FIX to enable storage of userID from profile ID
@@ -36,7 +40,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   constructor(
     private cartService: CartService,
     private snackBarService: SnackbarService,
-    private userService: ProfileService) {
+    private userService: ProfileService,
+    private mpesaService: MpesaService) {
       // BUG FIX to enable storage of userID from profile ID
     this.userService.getProfile().subscribe(profile => {
       this.profile = profile;
@@ -159,6 +164,25 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
         }, error => {
           console.log('Error ocurred while deleting cart item : ', error);
         });
+  }
+
+  authMpesa() {
+    this.mpesaService.authMpesa().subscribe(response => {
+      this.mpesaAuth = response;
+      console.log(this.mpesaAuth);
+   //   localStorage.setItem('mpesaToken', this.mpesaAuth.access_token);
+     // console.log(`${this.mpesaAuth.auth_token}`);
+     
+      localStorage.setItem('mpesaToken', this.mpesaAuth);
+      const myObj = JSON.parse(this.mpesaAuth);
+      const firstKey = Object.values(myObj)[0];
+      localStorage.setItem('mpesaToken', `${firstKey}`);
+     // const firstKey = Object.values(this.mpesaAuth)[0];
+    //  this.token = [...this.mpesaAuth];
+     // console.log(`Key: ${firstKey}`);
+
+
+    }, error => console.log(error));
   }
 
   ngOnDestroy() {

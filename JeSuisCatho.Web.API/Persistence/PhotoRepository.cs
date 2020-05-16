@@ -21,5 +21,11 @@ namespace JeSuisCatho.Web.API.Persistence
               .Where(p => p.ProductId == productId)
               .ToListAsync();
         }
+
+        public void Add(Photo photo)
+        {
+            context.Photos.Add(photo);
+
+        }
     }
 }

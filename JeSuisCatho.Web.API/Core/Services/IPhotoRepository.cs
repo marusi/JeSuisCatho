@@ -9,5 +9,7 @@ namespace JeSuisCatho.Web.API.Core.Services
     public interface IPhotoRepository
     {
         Task<IEnumerable<Photo>> GetPhotos(int productId);
+
+        void Add(Photo photo);
     }
 }

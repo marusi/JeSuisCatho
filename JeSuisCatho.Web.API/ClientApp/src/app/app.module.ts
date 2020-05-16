@@ -55,6 +55,7 @@ import { ChurchService } from './services/church.service';
 import { AuthService } from './services/auth.service';
 import { ArticleService } from './services/article.service';
 import { CartService } from './services/cart.service';
+import { MpesaService } from './services/mpesa.service';
 import { ProductService } from './services/product.service';
 import { ProfileService } from './services/profile.service';
 import { FileService } from './services/file.service';
@@ -123,7 +124,7 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
-    LoaderService, ChurchService, CartService, ProductService, SnackbarService,
+    LoaderService, ChurchService, CartService, ProductService, SnackbarService, MpesaService,
     AuthService, ArticleService, ProfileService, FileService, SubscriptionService,
     ProductOrdersService, CheckOutService],
   bootstrap: [AppComponent]
