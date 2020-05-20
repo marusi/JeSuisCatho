@@ -44,6 +44,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
     this.userService.getProfile().subscribe(profile => {
       this.profile = profile;
+      this.profile.cartCount = profile.cartCount;
       this.cartCountWord = this.pluralize(this.profile.cartCount, `${this.wordItem}`);
 
     

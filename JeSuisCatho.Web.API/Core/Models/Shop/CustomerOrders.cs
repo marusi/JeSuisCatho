@@ -12,5 +12,15 @@ namespace JeSuisCatho.Web.API.Core.Models.Shop
 
         public DateTime DateCreated { get; set; }
         public decimal CartTotal { get; set; }
+
+        public string ShipName { get; set; }
+        public string ShipId { get; set; }
+        public string ShipAddress { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipRegion { get; set; }
+
+        public DateTime RequiredDate { get; set; }
+
+        public string PaymentId { get; set; }
     }
 }

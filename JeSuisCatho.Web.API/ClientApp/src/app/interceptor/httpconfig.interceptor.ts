@@ -22,14 +22,18 @@ export class TokenInterceptorService implements HttpInterceptor {
     
    
     const token = this.auth.getToken();
+
     let newHeaders = req.headers;
     if (token) {
       newHeaders = newHeaders.append('Authorization', `Bearer ${token}`);
       newHeaders = newHeaders.append('Content-Type', 'application/json');
       newHeaders = newHeaders.append('Accept', 'application/json');
-     
+
 
     }
+
+  
+     
     const authReq = req.clone({ headers: newHeaders });
     return next.handle(authReq).pipe(
       finalize(() => {
@@ -42,3 +46,5 @@ export class TokenInterceptorService implements HttpInterceptor {
    
   }
 }
+
+

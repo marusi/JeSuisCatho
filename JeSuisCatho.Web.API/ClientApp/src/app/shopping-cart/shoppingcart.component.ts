@@ -169,17 +169,14 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   authMpesa() {
     this.mpesaService.authMpesa().subscribe(response => {
       this.mpesaAuth = response;
-      console.log(this.mpesaAuth);
-   //   localStorage.setItem('mpesaToken', this.mpesaAuth.access_token);
-     // console.log(`${this.mpesaAuth.auth_token}`);
+
      
       localStorage.setItem('mpesaToken', this.mpesaAuth);
       const myObj = JSON.parse(this.mpesaAuth);
-      const firstKey = Object.values(myObj)[0];
-      localStorage.setItem('mpesaToken', `${firstKey}`);
-     // const firstKey = Object.values(this.mpesaAuth)[0];
-    //  this.token = [...this.mpesaAuth];
-     // console.log(`Key: ${firstKey}`);
+      const firstValue = Object.values(myObj)[0];
+      localStorage.setItem('mpesaToken', `${firstValue}`);
+
+     // console.log(`Token Value: ${firstKey}`);
 
 
     }, error => console.log(error));

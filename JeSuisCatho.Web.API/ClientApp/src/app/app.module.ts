@@ -49,7 +49,7 @@ import { CheckOutComponent } from './checkout/checkout.component';
 
 
 //services
-import { TokenInterceptorService } from './interceptor/httpconfig.interceptor';
+import { TokenInterceptorService} from './interceptor/httpconfig.interceptor';
 import { LoaderService } from './services/loader.service';
 import { ChurchService } from './services/church.service';
 import { AuthService } from './services/auth.service';
@@ -124,6 +124,7 @@ import { ErrorInterceptorService } from './interceptor/error-interceptor.service
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true },
+   // { provide: HTTP_INTERCEPTORS, useClass: MpesaTokenInterceptorService, multi: true },
     LoaderService, ChurchService, CartService, ProductService, SnackbarService, MpesaService,
     AuthService, ArticleService, ProfileService, FileService, SubscriptionService,
     ProductOrdersService, CheckOutService],

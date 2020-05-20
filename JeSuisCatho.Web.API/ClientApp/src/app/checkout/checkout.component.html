@@ -1,4 +1,58 @@
-<app-header></app-header>
+
+<p></p>
+
+
+<nav class="navbar navbar-default alert-stack">
+  <div class="navbar-global theme-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <i class="glyph glyph-hamburger"></i>
+        </button>
+
+        <a class="navbar-brand" [routerLink]='["/"]'>JeSuisCatho</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+
+          <li>
+            <a *ngIf="!profile.isLoggedIn" [routerLinkActive]='["link-active"]'
+               [routerLink]='["/signin"]'> Sign in</a>
+          </li>
+          <li>
+            <a *ngIf="!profile.isLoggedIn" [routerLinkActive]='["link-active"]'
+               [routerLink]='["/signup"]'>Register</a>
+            <ng-container *ngIf="profile.isLoggedIn">
+
+              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{profile.name}} <i class="glyph glyph-chevron-down-2"></i></a>
+              <ul class="dropdown-menu">
+                <li><a [routerLink]='["/myorders"]'>My Orders</a></li>
+                <li><a (click)=signOut()>Sign out</a></li>
+
+              </ul>
+
+            </ng-container>
+          </li>
+          <li>
+
+          </li>
+
+        </ul>
+     
+      </div>
+    </div>
+  </div>
+
+</nav>
+
+
+
+
+
+
+
+
 <div class="container">
 
   <h3>Check Out</h3>
@@ -32,7 +86,7 @@
             <h3>Order Summary</h3>
 
           </th>
-          <th></th>
+          <th> <h4> {{profile.cartCount}} {{cartCountWord }}</h4></th>
           <th class="text-right">
 
 
@@ -56,15 +110,15 @@
           <li class="row" *ngFor="let item of checkOutItems.orderDetails">
 
             <div class="entity-list ">
-              <div [routerLink]="['/product/details/',item.product.id]"  class="entity-list-item ">
+              <div [routerLink]="['/product/details/',item.product.id]" class="entity-list-item ">
                 <div class="item-icon">
                   <span class=""></span>
                 </div>
                 <div class="item-content-secondary">
                   <div class="content-text-primary "> {{ item.product.sellUnitPrice | currency : 'KES' }} </div>
-                 
-                 Quantity: {{item.quantity}}
-                 
+
+                  Quantity: {{item.quantity}}
+
                 </div>
 
                 <div class="item-content-primary">
@@ -85,14 +139,13 @@
                       </th>
                       <th></th>
                       <th class="text-right">
-                     
+
 
                       </th>
-                    
+
                     </tr>
                   </thead>
                   <tbody>
-                 
                   </tbody>
                 </table>
 
@@ -104,7 +157,7 @@
 
           </li>
           <li>
-         
+
           </li>
         </ol>
 
@@ -112,7 +165,7 @@
 
 
       </div>
-     
+
       <div class="col-md-12">
         <table class="table table-striped">
           <thead>

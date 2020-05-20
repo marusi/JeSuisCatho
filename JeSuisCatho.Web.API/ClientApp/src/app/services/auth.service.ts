@@ -56,6 +56,10 @@ export class AuthService implements OnInit {
     return localStorage.getItem('token');
   }
 
+  getMpesaToken() {
+    return localStorage.getItem('mpesaToken');
+  }
+
   public authenticated(token) {
     // Check if there's an unexpired JWT
     // This searches for an item in localStorage with key == 'token'

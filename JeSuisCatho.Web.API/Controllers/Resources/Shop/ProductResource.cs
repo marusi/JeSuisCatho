@@ -34,11 +34,12 @@ namespace JeSuisCatho.Web.API.Controllers.Resources.Shop
 
         public ICollection<SupplierResource> Suppliers { get; set; }
 
-
+        public ICollection<PhotoResource> Photos { get; set; }
 
         public ProductResource()
         {
             Suppliers = new Collection<SupplierResource>();
+            Photos = new Collection<PhotoResource>();
            
            
         }

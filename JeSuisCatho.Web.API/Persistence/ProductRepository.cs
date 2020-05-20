@@ -34,6 +34,7 @@ namespace JeSuisCatho.Web.API.Persistence
                  .ThenInclude(ps => ps.Supplier)
              .Include(p => p.SubCategoryItem)
                   .ThenInclude(c => c.CategoryItem)
+            
               
               .SingleOrDefaultAsync(p => p.Id == id);
         }
@@ -56,6 +57,19 @@ namespace JeSuisCatho.Web.API.Persistence
         public void Add(Product product)
         {
             context.Products.Add(product);
+
+        }
+
+        public async Task<IEnumerable<Photo>> GetPhotos(int id)
+        {
+            return await context.Photos
+              .Where(p => p.ProductId == id)
+              .ToListAsync();
+        }
+
+        public void Add(Photo photo)
+        {
+            context.Photos.Add(photo);
 
         }
 

@@ -47,6 +47,13 @@ namespace JeSuisCatho.Web.API.Controllers
                 System.Text.ASCIIEncoding.ASCII.GetBytes($"{serverUrl.AppKey}:{serverUrl.AppSecret}")));
 
             var response = await client.GetStringAsync($"{serverUrl.MpesaHomeUrl}");
+           
+
+          
+
+            
+
+          
 
             return Ok(response);
 

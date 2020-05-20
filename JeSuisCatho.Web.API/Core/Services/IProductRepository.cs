@@ -19,5 +19,9 @@ namespace JeSuisCatho.Web.API.Core.Services
         Product GetProductData(int id);
 
         List<CartItemDto> GetProductsAvailableInCart(string cartId);
+
+        Task<IEnumerable<Photo>> GetPhotos(int id);
+
+        void Add(Photo photo);
     }
 }

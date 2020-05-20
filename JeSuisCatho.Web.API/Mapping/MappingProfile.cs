@@ -106,6 +106,7 @@ namespace JeSuisCatho.Web.API.Mapping
                     UnitInStock = p.SellUnitInStock,
                     UnitsOnOrder = p.SellUnitsOnOrder
                 }))
+                
                .ForMember(pr => pr.Suppliers, opt => opt.MapFrom(p => p.Suppliers.Select(ps => ps.SupplierId)));
             CreateMap<Product, ProductResource>()
                .ForMember(pr => pr.CategoryItem, opt => opt.MapFrom(p => p.SubCategoryItem.CategoryItem))
@@ -128,7 +129,16 @@ namespace JeSuisCatho.Web.API.Mapping
                    UnitInStock = p.SellUnitInStock,
                    UnitsOnOrder = p.SellUnitsOnOrder
                }))
-        
+
+              .ForMember(pr => pr.Photos, opt => opt.MapFrom(p => p.Photos.Select(ps => new PhotoResource
+                {
+                       Id = ps.Id,
+                       PhotoFileName = ps.PhotoFileName,
+                     
+                     
+                   
+                })))
+
                 .ForMember(pr => pr.Suppliers, opt => opt.MapFrom(p => p.Suppliers.Select(ps => new SupplierResource
                 {
                     Id = ps.Supplier.Id,

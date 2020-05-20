@@ -13,6 +13,7 @@ using JeSuisCatho.Web.API.Persistence;
 using JeSuisCatho.Web.API.Controllers.Resources;
 using JeSuisCatho.Web.API.Controllers.Resources.Shop;
 using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
 
 namespace JeSuisCatho.Web.API.Controllers
 {
@@ -137,21 +138,29 @@ namespace JeSuisCatho.Web.API.Controllers
         }
         [HttpGet]
         public async Task<IEnumerable<ProductResource>> GetProducts()
-        {
-         // int productId = await context.Products.Find(p => p.Id)
+        { 
+
+       
             var products = await context.Products
                 .Include(p => p.SubCategoryItem)
                     .ThenInclude(s => s.CategoryItem)
                 .Include(s => s.Suppliers)
                     .ThenInclude(ps => ps.Supplier)
-             
-
+               .Include(p => p.Photos).Where(photo => photo.Id == photo.Id)
                 .ToListAsync();
 
-         
+          
 
             return mapper.Map<List<Product>, List<ProductResource>>(products);
 
+        }
+
+        [HttpGet("photos")]
+        public async Task<IEnumerable<PhotoResource>> GetPhotos(int productId)
+        {
+            var photos = await photoRepository.GetPhotos(productId);
+
+            return mapper.Map<IEnumerable<Photo>, IEnumerable<PhotoResource>>(photos);
         }
 
 
