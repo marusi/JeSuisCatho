@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~9.1.6",
     "@angular/router": "~9.1.6",
     "@ngtools/webpack": "^8.3.26",
-    "ajv": "^6.12.2",
+    "ajv": "^6.12.3",
     "core-js": "^3.6.5",
     "hammerjs": "^2.0.8",
     "rxjs": "^6.5.5",
